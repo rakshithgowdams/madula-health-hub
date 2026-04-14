@@ -50,13 +50,13 @@ export default function About() {
                   src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=350&fit=crop" />
               </div>
               {/* Rotating badge */}
-              <div className="absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24">
+              <div className="absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-card rounded-full shadow-md flex items-center justify-center">
                 <svg viewBox="0 0 100 100" width="96" height="96" className="animate-spin" style={{ animationDuration: '20s' }}>
                   <defs><path id="tc2" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" fill="none" /></defs>
                   <text fontSize="9.5" fill="#4F46E5"><textPath href="#tc2">MADULA MEDICAL • DOCTORS SEARCH •</textPath></text>
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-10 h-10 bg-indigo-600 rounded-full" />
+                  <div className="w-10 h-10 bg-primary rounded-full" />
                 </div>
               </div>
             </div>
