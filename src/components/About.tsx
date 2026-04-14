@@ -42,7 +42,7 @@ export default function About() {
           <AnimatedSection direction="left">
             <div className="relative h-[420px] sm:h-[500px]">
               <div className="absolute left-0 bottom-0 w-3/4 h-4/5 overflow-hidden rounded-3xl shadow-xl">
-                <img className="about-main-img w-full h-full object-cover" alt="Doctor with patient" loading="lazy"
+                <img className="about-main-img w-full h-full object-cover my-0" alt="Doctor with patient" loading="lazy"
                   src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&h=600&fit=crop" />
               </div>
               <div className="absolute right-0 top-0 w-2/3 h-3/5 overflow-hidden rounded-3xl border-4 border-white shadow-2xl">
