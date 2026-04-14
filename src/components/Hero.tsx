@@ -56,7 +56,7 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-[1fr_1fr] gap-0 items-end">
         {/* Left */}
-        <div className="relative z-10 pb-12 lg:pb-20">
+        <div className="relative z-10 pb-12 lg:pb-16 flex flex-col justify-center">
           <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-5 text-secondary-foreground">
             <Heart className="w-4 h-4 fill-current text-destructive" />
             Solutions for Better Health
@@ -125,7 +125,7 @@ const Hero = () => {
         </div>
 
         {/* Right — Doctor image touching bottom */}
-        <div className="relative flex justify-center lg:justify-end">
+        <div className="relative flex justify-center lg:justify-end items-end h-full">
           {/* Pink cross - top right */}
           <div ref={plusRef1} className="absolute -top-4 right-4 lg:right-16 z-20">
             <Plus className="w-8 h-8 text-pink-500" strokeWidth={3} />
@@ -154,12 +154,12 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="relative h-full flex items-end"
           >
             <img
               src="/b1ab3f0d-41a7-4b12-878e-10d112ead6b4.png"
               alt="Professional doctor in blue scrubs with stethoscope"
-              className="w-full max-w-[520px] xl:max-w-[580px] object-contain"
+              className="h-[85vh] w-auto object-contain object-bottom"
             />
           </motion.div>
         </div>
