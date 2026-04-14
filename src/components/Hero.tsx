@@ -137,7 +137,7 @@ export default function Hero() {
               <motion.img
                 src="/Heart_message_1.svg"
                 alt=""
-                className="w-24 h-24 drop-shadow-xl"
+                className="w-24 h-24 drop-shadow-xl mx-[74px] px-0 my-[64px]"
                 animate={{
                   y: [0, -6, 0],
                   scale: [1, 1.05, 1],
