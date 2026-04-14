@@ -46,7 +46,7 @@ export default function About() {
                   src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&h=600&fit=crop" />
               </div>
               <div className="absolute right-0 top-0 w-2/3 h-3/5 overflow-hidden rounded-3xl border-4 border-white shadow-2xl">
-                <img className="about-sec-img w-full h-full object-cover" alt="Medical team" loading="lazy"
+                <img className="about-sec-img w-full h-full object-cover my-0" alt="Medical team" loading="lazy"
                   src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=350&fit=crop" />
               </div>
               {/* Rotating badge */}
