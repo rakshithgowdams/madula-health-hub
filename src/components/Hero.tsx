@@ -106,18 +106,18 @@ export default function Hero() {
               loading="lazy"
               src="/Dr._Hero_section_Image.svg"
             />
-            {/* Decorative SVGs — hidden on mobile for clean layout */}
-            <div className="hidden sm:flex float-el absolute -top-3 -right-3 w-10 h-10 items-center justify-center">
+            {/* Decorative SVGs — only visible on desktop (lg+) */}
+            <div className="hidden lg:flex float-el absolute -top-3 -right-3 w-10 h-10 items-center justify-center">
               <img src="/Purple_place-2.svg" alt="" className="w-10 h-10" />
             </div>
-            <div className="hidden sm:flex float-el absolute bottom-24 -left-3 w-8 h-8 items-center justify-center">
+            <div className="hidden lg:flex float-el absolute bottom-24 -left-3 w-8 h-8 items-center justify-center">
               <img src="/Pink_Bless-2.svg" alt="" className="w-8 h-8" />
             </div>
-            <div className="hidden md:block absolute top-1/4 -left-6 lg:-left-6">
+            <div className="hidden lg:block absolute top-1/4 -left-6">
               <motion.img
                 src="/Heart_message-2.svg"
                 alt=""
-                className="w-14 h-14 lg:w-20 lg:h-20 drop-shadow-xl"
+                className="w-20 h-20 drop-shadow-xl"
                 animate={{
                   y: [0, -8, 0],
                   scale: [1, 1.08, 1],
@@ -129,11 +129,11 @@ export default function Hero() {
                 }}
               />
             </div>
-            <div className="hidden md:block absolute top-[30%] -right-2 lg:-right-4">
+            <div className="hidden lg:block absolute top-[30%] -right-4">
               <motion.img
                 src="/Heart_message_1.svg"
                 alt=""
-                className="w-14 h-14 lg:w-20 lg:h-20 drop-shadow-xl"
+                className="w-20 h-20 drop-shadow-xl"
                 animate={{
                   y: [0, -6, 0],
                   scale: [1, 1.05, 1],
