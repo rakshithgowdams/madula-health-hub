@@ -1,16 +1,14 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Mail } from 'lucide-react';
 
 const Newsletter = () => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-
   return (
-    <section className="py-16 lg:py-20" ref={ref}>
+    <section className="py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
           className="bg-gradient-to-r from-primary to-purple-600 rounded-3xl px-8 py-12 md:px-16 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8"
         >

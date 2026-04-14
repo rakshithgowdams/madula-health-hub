@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
@@ -10,13 +9,11 @@ const projects = [
 ];
 
 const Portfolio = () => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
   return (
-    <section id="portfolio" className="py-20 lg:py-28" ref={ref}>
+    <section id="portfolio" className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
-        <motion.span initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="text-sm font-semibold text-primary"># Medical Project</motion.span>
-        <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2 mb-12">
+        <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} className="text-sm font-semibold text-primary"># Medical Project</motion.span>
+        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2 mb-12">
           One Portfolio at a Time.
         </motion.h2>
 
@@ -25,7 +22,8 @@ const Portfolio = () => {
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ scale: 1.03 }}
               className="relative rounded-2xl overflow-hidden group cursor-pointer aspect-[3/4]"

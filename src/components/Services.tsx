@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
@@ -12,27 +11,27 @@ const services = [
 ];
 
 const Services = () => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
-
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="services" className="py-20 lg:py-28" ref={ref}>
+    <section id="services" className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="flex items-end justify-between mb-12">
           <div>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
               className="text-sm font-semibold text-primary"
             >
               # Our Services
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: 0.1 }}
               className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2"
             >
@@ -57,7 +56,8 @@ const Services = () => {
                 key={i}
                 className="flex-[0_0_85%] min-w-0"
                 initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ delay: i * 0.1 }}
               >
                 <ServiceCard {...s} />
@@ -72,7 +72,8 @@ const Services = () => {
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1 }}
             >
               <ServiceCard {...s} />

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { CheckCircle, ArrowRight, Star } from 'lucide-react';
 
 const plans = [
@@ -17,14 +16,12 @@ const features = [
 ];
 
 const Pricing = () => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
   return (
-    <section id="pricing" className="py-20 lg:py-28" style={{ backgroundColor: '#F0F0FF' }} ref={ref}>
+    <section id="pricing" className="py-20 lg:py-28" style={{ backgroundColor: '#F0F0FF' }}>
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="text-center mb-12">
-          <motion.span initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="text-sm font-semibold text-primary"># Pricing Plan</motion.span>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">
+          <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} className="text-sm font-semibold text-primary"># Pricing Plan</motion.span>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">
             Flexible Options for Every Patient.
           </motion.h2>
         </div>
@@ -34,13 +31,14 @@ const Pricing = () => {
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.15 }}
-              whileHover={!plan.featured ? { scale: 1.02, borderColor: 'hsl(239, 84%, 67%)' } : {}}
+              whileHover={!plan.featured ? { scale: 1.02 } : {}}
               className={`rounded-2xl p-8 ${
                 plan.featured
                   ? 'bg-primary text-primary-foreground animate-pulse-glow'
-                  : 'bg-card border'
+                  : 'bg-card border hover:border-primary transition-colors'
               }`}
             >
               <div className="flex items-center gap-2 mb-4">

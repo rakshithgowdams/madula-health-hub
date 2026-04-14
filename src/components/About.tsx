@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import CircularProgress from './ui/CircularProgress';
 
@@ -11,15 +10,14 @@ const bullets = [
 ];
 
 const About = () => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
-
   return (
-    <section id="about" className="py-20 lg:py-28" ref={ref}>
+    <section id="about" className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
         {/* Left — Images */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
           className="relative"
         >
@@ -52,7 +50,8 @@ const About = () => {
         {/* Right */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
         >
           <span className="text-sm font-semibold text-primary"># About Us</span>

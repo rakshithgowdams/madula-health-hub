@@ -1,17 +1,15 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { ShieldCheck, Heart } from 'lucide-react';
 
 const WhyChooseUs = () => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
-
   return (
-    <section className="py-20 lg:py-28" ref={ref}>
+    <section className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
         {/* Left — Image */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
           className="relative"
         >
@@ -35,7 +33,8 @@ const WhyChooseUs = () => {
         {/* Right */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
         >
           <span className="text-sm font-semibold text-primary"># Why Choose Us</span>

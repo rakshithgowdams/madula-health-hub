@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Star, Quote, ArrowLeft, ArrowRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
@@ -14,18 +13,17 @@ const testimonials = [
 const partners = ['Airtable', 'Uber', 'Amazon', 'Vine', 'Monday', 'TED'];
 
 const Testimonials = () => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start', slidesToScroll: 1 });
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section className="py-20 lg:py-28" ref={ref}>
+    <section className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <motion.span initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="text-sm font-semibold text-primary"># Testimonials</motion.span>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">
+            <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} className="text-sm font-semibold text-primary"># Testimonials</motion.span>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">
               What Our Patients Say?
             </motion.h2>
           </div>
@@ -41,7 +39,8 @@ const Testimonials = () => {
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ delay: i * 0.1 }}
                 className="flex-[0_0_100%] md:flex-[0_0_48%] min-w-0 bg-card border rounded-2xl p-6 relative"
               >

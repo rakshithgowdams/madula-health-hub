@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { ArrowRight, User, MessageSquare } from 'lucide-react';
 
 const posts = [
@@ -9,17 +8,15 @@ const posts = [
 ];
 
 const Blog = () => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
   return (
-    <section id="blog" className="py-20 lg:py-28" ref={ref}>
+    <section id="blog" className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <motion.span initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="text-sm font-semibold text-primary"># Blog</motion.span>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">Our Medical Blog.</motion.h2>
+            <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} className="text-sm font-semibold text-primary"># Blog</motion.span>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">Our Medical Blog.</motion.h2>
           </div>
-          <motion.a href="#" initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary">
+          <motion.a href="#" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary">
             View All Blog <ArrowRight className="w-4 h-4" />
           </motion.a>
         </div>
@@ -29,7 +26,8 @@ const Blog = () => {
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -4 }}
               className="bg-card border rounded-2xl overflow-hidden cursor-pointer"
