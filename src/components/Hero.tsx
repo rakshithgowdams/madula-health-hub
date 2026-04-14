@@ -4,8 +4,6 @@ import { Heart, Plus, ArrowRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedCounter from './ui/AnimatedCounter';
-import heartBubble from '@/assets/heart-bubble.png';
-import pinkCross from '@/assets/pink-cross.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,14 +49,14 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen pt-28 pb-20 lg:pt-36 lg:pb-0 overflow-hidden bg-[#e5f1f5]">
+    <section id="home" className="relative min-h-screen pt-28 pb-0 lg:pt-36 overflow-hidden bg-[#e5f1f5]">
       {/* Background gradient blobs */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl -z-10" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/3 blur-3xl -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center font-sans lg:px-[32px] rounded-none text-6xl">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-8 items-end">
         {/* Left */}
-        <div className="relative z-10">
+        <div className="relative z-10 pb-12 lg:pb-20">
           <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-5 text-secondary-foreground">
             <Heart className="w-4 h-4 fill-current text-destructive" />
             Solutions for Better Health
@@ -116,7 +114,6 @@ const Hero = () => {
                   <AnimatedCounter end={s.value} suffix={s.suffix} className="text-center text-secondary-foreground border-0" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
-                {/* Floating cross after last stat */}
                 {i === stats.length - 1 && (
                   <div className="absolute -right-10 top-1/2 -translate-y-1/2">
                     <Plus className="w-7 h-7 text-primary" />
@@ -127,29 +124,29 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Right */}
-        <div className="relative flex justify-center lg:justify-end items-end self-end">
+        {/* Right — Doctor image touching bottom */}
+        <div className="relative flex justify-center lg:justify-end">
           {/* Pink cross - top right */}
-          <div ref={plusRef1} className="absolute top-4 right-8 z-20">
-            <img src={pinkCross} alt="" className="w-8 h-8" />
+          <div ref={plusRef1} className="absolute -top-4 right-4 lg:right-16 z-20">
+            <Plus className="w-8 h-8 text-pink-500" strokeWidth={3} />
           </div>
 
           {/* Heart bubble icon - left of doctor */}
-          <div ref={heartRef} className="absolute top-1/4 left-8 lg:left-0 z-20">
-            <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-20 h-20 lg:w-24 lg:h-24 text-left mx-[150px] rounded-none object-fill" />
+          <div ref={heartRef} className="absolute top-1/4 left-0 lg:-left-8 z-20">
+            <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-20 h-20 lg:w-24 lg:h-24" />
           </div>
 
-          {/* Blue cross - bottom right */}
-          <div ref={plusRef2} className="absolute bottom-12 right-0 z-20">
-            <Plus className="w-10 h-10 text-primary" strokeWidth={3} />
-          </div>
-
-          {/* Decorative scribble/arrow marks - dark */}
-          <div className="absolute top-16 right-0 z-10 opacity-80">
-            <svg width="60" height="50" viewBox="0 0 60 50" fill="none" className="text-xs text-center">
+          {/* Decorative scribble/arrow marks */}
+          <div className="absolute top-1/3 right-0 lg:-right-4 z-10 opacity-80">
+            <svg width="60" height="50" viewBox="0 0 60 50" fill="none">
               <path d="M5 45C15 20 35 10 55 5" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" />
               <path d="M45 2L55 5L50 14" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
+          </div>
+
+          {/* Purple cross - bottom right */}
+          <div ref={plusRef2} className="absolute bottom-16 -right-4 lg:right-0 z-20">
+            <Plus className="w-8 h-8 text-purple-500" strokeWidth={3} />
           </div>
 
           <motion.div
@@ -162,7 +159,7 @@ const Hero = () => {
             <img
               src="/b1ab3f0d-41a7-4b12-878e-10d112ead6b4.png"
               alt="Professional doctor in blue scrubs with stethoscope"
-              className="rounded-t-3xl rounded-b-none w-full max-w-md lg:max-w-lg xl:max-w-xl object-cover mb-0"
+              className="w-full max-w-md lg:max-w-lg xl:max-w-xl object-contain"
             />
           </motion.div>
         </div>
