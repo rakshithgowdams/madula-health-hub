@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import TestSection from '@/components/TestSection';
 import Services from '@/components/Services';
 import About from '@/components/About';
 import MarqueeBanner from '@/components/MarqueeBanner';
@@ -17,6 +18,7 @@ const Index = () => (
     <CustomCursor />
     <Navbar />
     <Hero />
+    <TestSection />
     <Services />
     <About />
     <MarqueeBanner />
