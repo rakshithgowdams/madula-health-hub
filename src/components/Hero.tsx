@@ -95,19 +95,17 @@ export default function Hero() {
 
           {/* Right */}
           <motion.div
-            className="order-1 lg:order-2 relative h-[420px] sm:h-[500px] lg:h-[600px]"
+            className="order-1 lg:order-2 relative flex items-end justify-center self-end"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="absolute inset-0 overflow-hidden rounded-3xl">
-              <img
-                className="hero-image w-full h-full object-cover object-top"
-                alt="Doctor"
-                loading="lazy"
-                src="/Dr._Hero_section_Image.svg"
-              />
-            </div>
+            <img
+              className="hero-image w-full max-h-[600px] object-contain object-bottom"
+              alt="Doctor"
+              loading="lazy"
+              src="/Dr._Hero_section_Image.svg"
+            />
             <div className="float-el absolute -top-3 -right-3 w-10 h-10 flex items-center justify-center">
               <img src="/Purple_place-2.svg" alt="" className="w-10 h-10" />
             </div>
