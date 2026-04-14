@@ -59,8 +59,8 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         {/* Left */}
         <div className="relative z-10">
-          <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-destructive text-xs font-semibold uppercase tracking-wider mb-5">
-            <Heart className="w-4 h-4 fill-current" />
+          <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-5 text-secondary-foreground">
+            <Heart className="w-4 h-4 fill-current text-destructive" />
             Solutions for Better Health
           </motion.div>
 
