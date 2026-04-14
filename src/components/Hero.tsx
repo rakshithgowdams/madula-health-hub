@@ -95,13 +95,13 @@ export default function Hero() {
 
           {/* Right */}
           <motion.div
-            className="order-1 lg:order-2 relative flex items-end justify-center self-end"
+            className="order-1 lg:order-2 relative self-end"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <img
-              className="hero-image w-full max-h-[600px] object-contain object-bottom"
+              className="hero-image w-full h-auto block"
               alt="Doctor"
               loading="lazy"
               src="/Dr._Hero_section_Image.svg"
@@ -112,7 +112,7 @@ export default function Hero() {
             <div className="float-el absolute bottom-24 -left-3 w-8 h-8 flex items-center justify-center">
               <img src="/Pink_Bless-2.svg" alt="" className="w-8 h-8" />
             </div>
-            <div className="absolute top-1/3 -left-6">
+            <div className="absolute top-1/4 -left-6">
               <motion.img
                 src="/Heart_message-2.svg"
                 alt=""
@@ -125,6 +125,23 @@ export default function Hero() {
                   duration: 3,
                   repeat: Infinity,
                   ease: 'easeInOut',
+                }}
+              />
+            </div>
+            <div className="absolute top-[30%] -right-4">
+              <motion.img
+                src="/Heart_message_1.svg"
+                alt=""
+                className="w-20 h-20 drop-shadow-xl"
+                animate={{
+                  y: [0, -6, 0],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: 0.5,
                 }}
               />
             </div>
