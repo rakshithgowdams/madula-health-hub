@@ -56,7 +56,7 @@ export default function Hero() {
                 Read More
                 <motion.span whileHover={{ x: 4 }}><ArrowRight size={18} /></motion.span>
               </button>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 my-[18px]">
                 <div className="flex">
                   {avatars.map((src, i) => (
                     <img
