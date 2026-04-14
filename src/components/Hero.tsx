@@ -22,7 +22,7 @@ export default function Hero() {
   return (
     <section className="hero-section bg-[#F8F9FF] pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden mx-[43px] my-px">
       <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
-        <div className="grid h-full grid-cols-1 items-end gap-12 lg:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
           {/* Left */}
           <motion.div
@@ -35,7 +35,7 @@ export default function Hero() {
               <Heart size={14} className="text-red-500 fill-red-500" />
               <span className="text-xs font-semibold tracking-widest text-red-500 uppercase">Solutions For Better Health</span>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-display leading-tight text-slate-900 mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-display leading-tight text-slate-900 mb-4 lg:mb-6">
               {words.map((w, i) => (
                 <motion.span
                   key={w}
@@ -81,10 +81,10 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-            <div ref={ref} className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-slate-100 px-0 mx-0 my-[45px]">
+            <div ref={ref} className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 lg:pt-8 border-t border-slate-100">
               {stats.map(s => (
                 <div key={s.label}>
-                  <p className="text-4xl font-extrabold font-display text-slate-900">
+                  <p className="text-2xl sm:text-4xl font-extrabold font-display text-slate-900">
                     {inView ? <CountUp end={s.end} suffix={s.suffix} duration={2.5} /> : '0'}
                   </p>
                   <p className="text-sm text-slate-500 mt-1">{s.label}</p>
@@ -95,7 +95,7 @@ export default function Hero() {
 
           {/* Right */}
           <motion.div
-            className="order-1 lg:order-2 relative h-[340px] sm:h-[420px] lg:h-[580px]"
+            className="order-1 lg:order-2 relative h-[300px] sm:h-[420px] lg:h-[580px]"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
