@@ -20,7 +20,7 @@ export default function Hero() {
   const words = ['YOUR', 'HEALTH', 'OUR', 'PRIORITY'];
 
   return (
-    <section className="hero-section bg-[#F8F9FF] pt-24 pb-0 lg:pt-32 lg:pb-0 overflow-hidden">
+    <section className="hero-section bg-[#F8F9FF] min-h-[85vh] sm:min-h-[80vh] md:min-h-[85vh] lg:min-h-[90vh] pt-24 pb-0 lg:pt-32 lg:pb-0 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
