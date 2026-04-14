@@ -132,7 +132,7 @@ const Hero = () => {
           </div>
 
           {/* Heart bubble icon - between text and doctor */}
-          <div ref={heartRef} className="absolute top-[25%] left-[-10%] z-20">
+          <div ref={heartRef} className="absolute top-[30%] left-[25%] z-20">
             <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-24 h-24 lg:w-28 lg:h-28" />
           </div>
 
