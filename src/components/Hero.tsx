@@ -126,26 +126,26 @@ const Hero = () => {
 
         {/* Right — Doctor image touching bottom */}
         <div className="relative flex justify-center lg:justify-end items-end h-full">
-          {/* Pink cross - top right */}
-          <div ref={plusRef1} className="absolute -top-4 right-4 lg:right-16 z-20">
+          {/* Pink cross - top right of doctor area */}
+          <div ref={plusRef1} className="absolute top-[15%] right-[15%] z-20">
             <Plus className="w-8 h-8 text-pink-500" strokeWidth={3} />
           </div>
 
           {/* Heart bubble icon - left of doctor */}
-          <div ref={heartRef} className="absolute top-1/4 left-0 lg:-left-8 z-20">
+          <div ref={heartRef} className="absolute top-[35%] left-[5%] z-20">
             <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-20 h-20 lg:w-24 lg:h-24" />
           </div>
 
           {/* Decorative scribble/arrow marks */}
-          <div className="absolute top-1/3 right-0 lg:-right-4 z-10 opacity-80">
-            <svg width="60" height="50" viewBox="0 0 60 50" fill="none">
+          <div className="absolute top-[40%] right-[2%] z-10 opacity-80">
+            <svg width="70" height="60" viewBox="0 0 60 50" fill="none">
               <path d="M5 45C15 20 35 10 55 5" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" />
               <path d="M45 2L55 5L50 14" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
 
           {/* Purple cross - bottom right */}
-          <div ref={plusRef2} className="absolute bottom-16 -right-4 lg:right-0 z-20">
+          <div ref={plusRef2} className="absolute bottom-[10%] right-[2%] z-20">
             <Plus className="w-8 h-8 text-purple-500" strokeWidth={3} />
           </div>
 
