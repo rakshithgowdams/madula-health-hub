@@ -56,7 +56,7 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-[1fr_1fr] gap-0 items-end h-full">
         {/* Left */}
-        <div className="relative z-10 pb-12 lg:pb-16 flex flex-col justify-center">
+        <div className="relative z-10 pb-12 lg:pb-16 flex flex-col justify-end lg:justify-center">
           <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-5 text-secondary-foreground">
             <Heart className="w-4 h-4 fill-current text-destructive" />
             Solutions for Better Health
@@ -159,7 +159,7 @@ const Hero = () => {
             <img
               src="/b1ab3f0d-41a7-4b12-878e-10d112ead6b4.png"
               alt="Professional doctor in blue scrubs with stethoscope"
-              className="h-[85vh] w-auto object-contain object-bottom"
+              className="h-[80vh] w-auto object-contain object-bottom"
             />
           </motion.div>
         </div>
