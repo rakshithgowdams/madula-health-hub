@@ -107,7 +107,7 @@ const Hero = () => {
                 </div>
                 <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">{s.label}</p>
                 {s.label === 'Expert Specialists' && (
-                  <div ref={skyBluePlusRef} className="absolute -top-4 right-[-105px] z-20 hidden lg:block">
+                  <div ref={skyBluePlusRef} className="absolute -top-4 right-[-105px] z-20 hidden md:block">
                     <img src="/Skyblue_Pluse.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10 mx-[24px] my-[64px]" />
                   </div>
                 )}
@@ -135,22 +135,22 @@ const Hero = () => {
 
           {/* Decorative elements — hidden on mobile, visible on lg+ */}
           {/* Heart message bubble */}
-          <div ref={heartRef} className="absolute top-[20%] left-[5%] z-20 hidden lg:block">
+          <div ref={heartRef} className="absolute top-[20%] left-[5%] z-20 hidden md:block">
             <img src="/Heart_message.svg" alt="" className="w-28 h-28 lg:w-36 lg:h-36 drop-shadow-2xl mx-0 my-[171px]" />
           </div>
 
           {/* Pink cross */}
-          <div ref={pinkPlusRef} className="absolute top-[6%] right-[18%] z-20 hidden lg:block">
+          <div ref={pinkPlusRef} className="absolute top-[6%] right-[18%] z-20 hidden md:block">
             <img src="/Pink_Bless.svg" alt="" className="w-10 h-10 lg:w-14 lg:h-14" />
           </div>
 
           {/* Arrow/scribble */}
-          <div ref={arrowRef} className="absolute top-[25%] right-[-3%] z-10 hidden lg:block">
+          <div ref={arrowRef} className="absolute top-[25%] right-[-3%] z-10 hidden md:block">
             <img src="/Simple_writing.svg" alt="" className="w-44 h-20 lg:w-56 lg:h-24 mx-[27px] -rotate-[5deg] my-[219px]" />
           </div>
 
           {/* Purple cross */}
-          <div ref={purplePlusRef} className="absolute bottom-[100px] right-[calc(2%+10px)] z-20 hidden lg:block">
+          <div ref={purplePlusRef} className="absolute bottom-[100px] right-[calc(2%+10px)] z-20 hidden md:block">
             <img src="/Purple_place.svg" alt="" className="w-10 h-10 lg:w-14 lg:h-14 px-0 my-px mx-0" />
           </div>
         </div>
