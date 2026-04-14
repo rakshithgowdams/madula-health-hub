@@ -114,8 +114,8 @@ export default function Hero() {
             <div className="float-el absolute bottom-24 -left-3 w-8 h-8 bg-pink-400 rounded-full flex items-center justify-center shadow-lg">
               <Plus size={16} color="white" />
             </div>
-            <div className="absolute top-1/3 -left-6 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center">
-              <Heart size={24} className="text-indigo-600 fill-indigo-100" />
+            <div className="absolute top-1/3 -left-6">
+              <img src="/Heart_message-2.svg" alt="" className="w-20 h-20 drop-shadow-xl" />
             </div>
           </motion.div>
         </div>
