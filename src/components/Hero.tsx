@@ -81,7 +81,7 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-            <div ref={ref} className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-slate-100">
+            <div ref={ref} className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-slate-100 px-0 mx-0 my-[45px]">
               {stats.map(s => (
                 <div key={s.label}>
                   <p className="text-4xl font-extrabold font-display text-slate-900">
