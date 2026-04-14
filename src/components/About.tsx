@@ -39,7 +39,8 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Left — image stack */}
-          <AnimatedSection direction="left" className="overflow-hidden">
+          <AnimatedSection direction="left">
+            <div className="overflow-hidden">
             <div className="relative h-[360px] sm:h-[440px] lg:h-[520px]">
               <div className="absolute left-0 bottom-0 w-3/4 h-[75%] overflow-hidden rounded-3xl shadow-xl">
                 <img className="about-main-img w-full h-full object-cover my-0" alt="Doctor with patient" loading="lazy"
