@@ -1,20 +1,30 @@
+import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
 
-const Newsletter = () => (
-  <section className="py-16 lg:py-20">
-    <div className="max-w-7xl mx-auto px-4 lg:px-8">
-      <div className="bg-gradient-to-r from-primary to-purple-600 rounded-3xl px-8 py-12 md:px-16 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8">
-        <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-primary-foreground max-w-md">Subscribe To Regular Newsletters.</h2>
-        <form className="flex w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
-          <div className="relative flex-1 md:w-80">
-            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-            <input type="email" placeholder="Enter your email" className="w-full pl-12 pr-4 py-3 rounded-l-full bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+export default function Newsletter() {
+  return (
+    <section className="bg-white py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-indigo-600 rounded-3xl px-8 md:px-16 py-14 flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+          <h2 className="text-white font-extrabold font-display text-3xl md:text-4xl max-w-xs">
+            Subscribe To Regular Newsletters.
+          </h2>
+          <div className="flex items-center gap-3 w-full md:w-auto">
+            <div className="flex items-center gap-3 bg-white rounded-full px-5 py-4 flex-1 md:w-72">
+              <Mail size={16} className="text-slate-400 flex-shrink-0" />
+              <input className="flex-1 text-sm focus:outline-none bg-transparent" placeholder="Enter Your Email" />
+            </div>
+            <button className="bg-white text-indigo-600 hover:bg-indigo-50 px-6 py-4 rounded-full font-semibold text-sm whitespace-nowrap transition-colors">
+              Subscribe
+            </button>
           </div>
-          <button className="bg-card text-primary px-6 py-3 rounded-r-full text-sm font-semibold hover:bg-secondary transition-colors whitespace-nowrap">Subscribe</button>
-        </form>
+        </motion.div>
       </div>
-    </div>
-  </section>
-);
-
-export default Newsletter;
+    </section>
+  );
+}

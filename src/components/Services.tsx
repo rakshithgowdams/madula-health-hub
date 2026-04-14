@@ -1,60 +1,51 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
-import useEmblaCarousel from 'embla-carousel-react';
-import { useCallback } from 'react';
+import { Smile, ClipboardList, Brain, ClipboardCheck, ArrowRight, ArrowLeft } from 'lucide-react';
+import AnimatedSection from './AnimatedSection';
 
 const services = [
-  { title: 'Dental Checkup', icon: '🦷', color: 'bg-purple-100 text-purple-600', desc: 'Comprehensive dental examinations and preventive treatments for optimal oral health.' },
-  { title: 'Preventive Care', icon: '📋', color: 'bg-emerald-100 text-emerald-600', desc: 'Proactive health screenings and wellness programs to keep you healthy.' },
-  { title: 'Medical Services', icon: '🧠', color: 'bg-pink-100 text-pink-600', desc: 'Full-spectrum medical care from diagnosis to treatment and recovery.' },
-  { title: 'Health Monitoring', icon: '✅', color: 'bg-green-100 text-green-600', desc: 'Continuous health tracking and regular check-ups for ongoing wellness.' },
+  { title: 'Dental Checkup', Icon: Smile, bg: 'bg-purple-100', color: 'text-purple-600', desc: 'Our comprehensive preventive care services are designed to identify potential issues early.' },
+  { title: 'Preventive Care', Icon: ClipboardList, bg: 'bg-green-100', color: 'text-green-600', desc: 'Our comprehensive preventive care services are designed to identify potential issues early.' },
+  { title: 'Medical Services', Icon: Brain, bg: 'bg-pink-100', color: 'text-pink-600', desc: 'Our comprehensive preventive care services are designed to identify potential issues early.' },
+  { title: 'Preventive Care', Icon: ClipboardCheck, bg: 'bg-green-100', color: 'text-green-600', desc: 'Our comprehensive preventive care services are designed to identify potential issues early.' },
 ];
 
-const Services = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
+export default function Services() {
   return (
-    <section id="services" className="py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <span className="text-sm font-semibold text-primary block"># Our Services</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">Our Medical Services.</h2>
-          </div>
-          <div className="hidden md:flex gap-2">
-            <button onClick={scrollPrev} className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Previous"><ArrowLeft className="w-4 h-4" /></button>
-            <button onClick={scrollNext} className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Next"><ArrowRight className="w-4 h-4" /></button>
-          </div>
-        </div>
-
-        <div className="md:hidden overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-4">
-            {services.map((s, i) => (
-              <div key={i} className="flex-[0_0_85%] min-w-0"><ServiceCard {...s} /></div>
-            ))}
+    <section className="bg-white py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-end mb-12">
+          <AnimatedSection>
+            <p className="text-indigo-600 text-sm font-semibold mb-2"># Our Services</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-display text-slate-900">Our Medical Services.</h2>
+          </AnimatedSection>
+          <div className="hidden lg:flex gap-3">
+            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:border-indigo-600 hover:text-indigo-600 transition-colors"><ArrowLeft size={16} /></button>
+            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:border-indigo-600 hover:text-indigo-600 transition-colors"><ArrowRight size={16} /></button>
           </div>
         </div>
-
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((s, i) => (<ServiceCard key={i} {...s} />))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map(({ title, Icon, bg, color, desc }, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(79,70,229,.12)' }}
+              className="bg-white border border-slate-100 rounded-2xl p-8 cursor-pointer group"
+            >
+              <div className={`w-16 h-16 ${bg} rounded-2xl flex items-center justify-center mb-6`}>
+                <Icon size={28} className={color} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed mb-6">{desc}</p>
+              <a className="flex items-center gap-2 text-indigo-600 text-sm font-semibold group-hover:gap-3 transition-all">
+                Read More <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-const ServiceCard = ({ title, icon, color, desc }: { title: string; icon: string; color: string; desc: string }) => (
-  <motion.div
-    whileHover={{ y: -8, boxShadow: '0 20px 40px -12px rgba(0,0,0,0.1)' }}
-    className="bg-card border rounded-2xl p-6 transition-shadow cursor-pointer"
-  >
-    <div className={`w-16 h-16 rounded-full ${color} flex items-center justify-center text-2xl mb-5`}>{icon}</div>
-    <h3 className="text-lg font-bold font-heading text-foreground mb-2">{title}</h3>
-    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{desc}</p>
-    <a href="#" className="text-sm font-medium text-primary inline-flex items-center gap-1 hover:gap-2 transition-all">Read More <ArrowRight className="w-4 h-4" /></a>
-  </motion.div>
-);
-
-export default Services;
+}

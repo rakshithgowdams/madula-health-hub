@@ -1,31 +1,28 @@
 import { Stethoscope, ShieldPlus, Syringe } from 'lucide-react';
 
-const items = [
-  { icon: Stethoscope, label: 'MEDICAL GROUP' },
-  { icon: ShieldPlus, label: 'CORE SERVICES' },
-  { icon: Syringe, label: 'TECHNOLOGY' },
-];
+const items = ['MEDICAL GROUP', 'CORE SERVICES', 'TECHNOLOGY'];
 
-const MarqueeRow = ({ direction, bg }: { direction: 'left' | 'right'; bg: string }) => (
-  <div className={`${bg} py-4 overflow-hidden`}>
-    <div className={direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'} style={{ display: 'flex', width: 'max-content' }}>
-      {[...Array(6)].map((_, rep) =>
-        items.map((item, i) => (
-          <div key={`${rep}-${i}`} className="flex items-center gap-3 mx-8 text-primary-foreground">
-            <item.icon className="w-5 h-5" />
-            <span className="text-sm font-semibold tracking-widest whitespace-nowrap">{item.label}</span>
-          </div>
-        ))
-      )}
+function Track({ reverse }: { reverse?: boolean }) {
+  const content = [...items, ...items, ...items, ...items].map((t, i) => (
+    <span key={i} className="flex items-center gap-3 mx-8 text-white font-bold text-base tracking-widest uppercase whitespace-nowrap">
+      {i % 3 === 0 ? <Stethoscope size={20} /> : i % 3 === 1 ? <ShieldPlus size={20} /> : <Syringe size={20} />}
+      {t}
+    </span>
+  ));
+  return (
+    <div className="overflow-hidden py-4">
+      <div className="flex w-max" style={{ animation: `${reverse ? 'scrollRight' : 'scrollLeft'} 30s linear infinite` }}>
+        {content}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
-const MarqueeBanner = () => (
-  <section className="overflow-hidden">
-    <MarqueeRow direction="left" bg="bg-primary" />
-    <MarqueeRow direction="right" bg="bg-foreground" />
-  </section>
-);
-
-export default MarqueeBanner;
+export default function MarqueeBanner() {
+  return (
+    <div>
+      <div className="bg-indigo-600"><Track /></div>
+      <div className="bg-slate-900"><Track reverse /></div>
+    </div>
+  );
+}

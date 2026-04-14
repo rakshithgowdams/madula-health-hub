@@ -1,194 +1,101 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { useScroll, useTransform, motion, AnimatePresence } from 'framer-motion';
 import { Target, Search, ArrowRight, Menu, X, ChevronDown } from 'lucide-react';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from '@/components/ui/dialog';
+import BookingModal from './BookingModal';
 
-const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  {
-    label: 'Research',
-    href: '#',
-    children: [
-      { label: 'Clinical Trials', href: '#' },
-      { label: 'Publications', href: '#' },
-    ],
-  },
-  {
-    label: 'Page',
-    href: '#',
-    children: [
-      { label: 'Pricing', href: '#pricing' },
-      { label: 'Portfolio', href: '#portfolio' },
-    ],
-  },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '#contact' },
-];
+const links = ['Home', 'About', 'Research', 'Page', 'Blog', 'Contact'];
+const hasDropdown = ['Research', 'Page'];
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const shadow = useTransform(scrollY, [0, 60], ['none', '0 2px 20px rgba(0,0,0,.08)']);
 
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-shadow ${
-          scrolled ? 'shadow-md bg-card/95' : 'bg-card/90'
-        }`}
-        animate={{ height: scrolled ? 64 : 80 }}
-        transition={{ duration: 0.3 }}
+        style={{ boxShadow: shadow }}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md"
       >
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 h-full flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
-              <Target className="w-5 h-5 text-primary-foreground" />
+            <div className="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center">
+              <Target size={18} color="white" />
             </div>
-            <span className="text-xl font-body">
-              Ma<span className="font-bold text-primary font-heading">dula</span>
+            <span className="text-xl text-slate-900">
+              Ma<span className="font-bold">dula</span>
             </span>
           </a>
 
-          {/* Desktop Nav */}
+          {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <div
-                key={link.label}
-                className="relative"
-                onMouseEnter={() => link.children && setOpenDropdown(link.label)}
-                onMouseLeave={() => setOpenDropdown(null)}
-              >
-                <a
-                  href={link.href}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1"
-                >
-                  {link.label}
-                  {link.children && <ChevronDown className="w-3 h-3" />}
-                </a>
-                {link.children && openDropdown === link.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="absolute top-full left-0 mt-2 w-44 bg-card rounded-lg shadow-lg border py-2"
-                  >
-                    {link.children.map((child) => (
-                      <a
-                        key={child.label}
-                        href={child.href}
-                        className="block px-4 py-2 text-sm text-foreground hover:bg-secondary transition-colors"
-                      >
-                        {child.label}
-                      </a>
-                    ))}
-                  </motion.div>
-                )}
-              </div>
+            {links.map(l => (
+              <a key={l} href={`#${l.toLowerCase()}`} className="text-sm font-medium text-slate-700 hover:text-indigo-600 transition-colors flex items-center gap-1">
+                {l}
+                {hasDropdown.includes(l) && <ChevronDown size={12} />}
+              </a>
             ))}
           </div>
 
-          {/* Right */}
-          <div className="flex items-center gap-4">
-            <button className="p-2 hover:bg-secondary rounded-full transition-colors" aria-label="Search">
-              <Search className="w-5 h-5 text-foreground" />
+          {/* Desktop right */}
+          <div className="hidden lg:flex items-center gap-4">
+            <button className="p-2 hover:bg-slate-100 rounded-full transition-colors" aria-label="Search">
+              <Search size={18} className="text-slate-600" />
             </button>
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setDialogOpen(true)}
-              className="hidden md:flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-medium"
-            >
-              Book Appointment <ArrowRight className="w-4 h-4" />
-            </motion.button>
             <button
-              className="lg:hidden p-2"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Menu"
+              onClick={() => setModalOpen(true)}
+              className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
             >
-              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              Book Appointment <ArrowRight size={14} />
             </button>
           </div>
-        </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden bg-card border-t overflow-hidden"
-            >
-              <div className="px-4 py-4 space-y-3">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    className="block text-sm font-medium text-foreground py-2"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-                <button
-                  onClick={() => { setDialogOpen(true); setMobileOpen(false); }}
-                  className="w-full bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-medium"
-                >
-                  Book Appointment
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          {/* Mobile hamburger */}
+          <button className="lg:hidden p-2" onClick={() => setOpen(true)} aria-label="Menu">
+            <Menu size={24} className="text-slate-900" />
+          </button>
+        </div>
       </motion.nav>
 
-      {/* Appointment Dialog */}
-      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="sm:max-w-lg">
-          <DialogHeader>
-            <DialogTitle className="font-heading">Book an Appointment</DialogTitle>
-            <DialogDescription>Fill out the form below and we'll get back to you shortly.</DialogDescription>
-          </DialogHeader>
-          <form className="space-y-4 mt-2" onSubmit={(e) => { e.preventDefault(); setDialogOpen(false); }}>
-            <input type="text" placeholder="Full Name" required className="w-full px-4 py-2.5 rounded-lg border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-            <input type="email" placeholder="Email Address" required className="w-full px-4 py-2.5 rounded-lg border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-            <input type="tel" placeholder="Phone Number" className="w-full px-4 py-2.5 rounded-lg border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-            <select className="w-full px-4 py-2.5 rounded-lg border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring">
-              <option>Select Department</option>
-              <option>Cardiology</option>
-              <option>Neurology</option>
-              <option>Dental</option>
-              <option>Orthopedics</option>
-            </select>
-            <input type="date" className="w-full px-4 py-2.5 rounded-lg border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-            <textarea placeholder="Your Message" rows={3} className="w-full px-4 py-2.5 rounded-lg border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              className="w-full bg-primary text-primary-foreground py-2.5 rounded-full text-sm font-medium"
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50"
+          >
+            <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25 }}
+              className="absolute top-0 right-0 h-full w-72 bg-white p-6 flex flex-col"
             >
-              Submit Appointment
-            </motion.button>
-          </form>
-        </DialogContent>
-      </Dialog>
+              <button className="self-end mb-8" onClick={() => setOpen(false)}>
+                <X size={24} />
+              </button>
+              {links.map(l => (
+                <a key={l} href={`#${l.toLowerCase()}`} className="text-lg font-medium text-slate-900 py-3 border-b border-slate-100" onClick={() => setOpen(false)}>
+                  {l}
+                </a>
+              ))}
+              <button
+                onClick={() => { setModalOpen(true); setOpen(false); }}
+                className="mt-auto bg-indigo-600 text-white py-3 rounded-full font-semibold"
+              >
+                Book Appointment
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <BookingModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
-};
-
-export default Navbar;
+}

@@ -1,64 +1,56 @@
-import { Star, Quote, ArrowLeft, ArrowRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useCallback } from 'react';
+import { Star, ArrowLeft, ArrowRight } from 'lucide-react';
+import AnimatedSection from './AnimatedSection';
 
 const testimonials = [
-  { name: 'Sarah Johnson', title: 'Patient', text: 'The care I received at Madula was exceptional. The staff was attentive, professional, and truly compassionate. I felt like family from the moment I walked in.' },
-  { name: 'Michael Chen', title: 'Senior Doctor', text: 'Working with such a dedicated team has been incredible. Our focus on patient-centered care sets us apart and delivers outstanding health outcomes.' },
-  { name: 'Emily Davis', title: 'Patient', text: 'From diagnosis to treatment, every step was handled with utmost care and professionalism. I highly recommend Madula to anyone seeking quality healthcare.' },
-  { name: 'Robert Wilson', title: 'Specialist', text: 'The cutting-edge facilities and collaborative environment at Madula enable us to provide the highest standard of medical care to our patients.' },
+  { text: 'The team at Md Nuristan Sheik went above and beyond during my treatment. From the doctors to the nurses, everyone was incredibly attentive and caring throughout the entire process.', name: 'DR Tamim Hossin', role: 'Senior Doctor', avatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&h=80&fit=crop&crop=face' },
+  { text: 'The team at Md Nuristan Sheik went above and beyond during my treatment. From the doctors to the nurses, everyone was incredibly attentive and caring throughout the entire process.', name: 'DR Tamim Hossin', role: 'Senior Doctor', avatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&h=80&fit=crop&crop=face' },
 ];
+const partners = ['Airtable', 'Uber', 'amazon', 'Vine', 'monday.com', 'TED'];
 
-const partners = ['Airtable', 'Uber', 'Amazon', 'Vine', 'Monday', 'TED'];
-
-const Testimonials = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start', slidesToScroll: 1 });
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
+export default function Testimonials() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
   return (
-    <section className="py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <span className="text-sm font-semibold text-primary block"># Testimonials</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">What Our Patients Say?</h2>
-          </div>
-          <div className="flex gap-2">
-            <button onClick={scrollPrev} className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Previous"><ArrowLeft className="w-4 h-4" /></button>
-            <button onClick={scrollNext} className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Next"><ArrowRight className="w-4 h-4" /></button>
-          </div>
-        </div>
-
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-6">
-            {testimonials.map((t, i) => (
-              <div key={i} className="flex-[0_0_100%] md:flex-[0_0_48%] min-w-0 bg-card border rounded-2xl p-6 relative">
-                <Quote className="absolute top-4 right-4 w-10 h-10 text-border" />
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, si) => (<Star key={si} className="w-4 h-4 text-yellow-400 fill-yellow-400" />))}
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">"{t.text}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/20" />
-                  <div>
-                    <p className="text-sm font-bold text-foreground">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.title}</p>
+    <section className="bg-white py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection>
+          <p className="text-indigo-600 text-sm font-semibold mb-2"># Testimonials</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold font-display text-slate-900 mb-12">What Our Patients Say?</h2>
+        </AnimatedSection>
+        <div className="relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-6">
+              {testimonials.map((t, i) => (
+                <div key={i} className="flex-none w-full md:w-1/2 border border-slate-100 rounded-2xl p-8">
+                  <div className="flex gap-1 mb-4">
+                    {Array(5).fill(0).map((_, j) => <Star key={j} size={16} className="text-yellow-400 fill-yellow-400" />)}
+                  </div>
+                  <p className="text-slate-600 leading-relaxed mb-6">{t.text}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <img src={t.avatar} alt={t.name} loading="lazy" className="w-12 h-12 rounded-full object-cover" />
+                      <div>
+                        <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
+                        <p className="text-slate-400 text-xs">{t.role}</p>
+                      </div>
+                    </div>
+                    <span className="text-slate-100 text-8xl font-serif leading-none select-none">"</span>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+          <div className="flex gap-3 mt-6">
+            <button onClick={() => emblaApi?.scrollPrev()} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:border-indigo-600 hover:text-indigo-600 transition-colors"><ArrowLeft size={16} /></button>
+            <button onClick={() => emblaApi?.scrollNext()} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:border-indigo-600 hover:text-indigo-600 transition-colors"><ArrowRight size={16} /></button>
           </div>
         </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mt-16">
-          {partners.map((p) => (
-            <span key={p} className="text-lg font-bold text-foreground/30 hover:text-foreground/80 transition-colors cursor-pointer font-heading">{p}</span>
+        <div className="flex flex-wrap justify-center items-center gap-10 mt-16 pt-10 border-t border-slate-100">
+          {partners.map(p => (
+            <span key={p} className="text-slate-300 hover:text-slate-500 font-bold text-lg transition-colors cursor-pointer select-none">{p}</span>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default Testimonials;
+}

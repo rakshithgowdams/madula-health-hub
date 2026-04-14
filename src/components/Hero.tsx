@@ -1,162 +1,125 @@
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Plus } from 'lucide-react';
-import { gsap } from 'gsap';
-import AnimatedCounter from './ui/AnimatedCounter';
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
+import { Heart, ArrowRight, Plus } from 'lucide-react';
 
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: 'easeOut' as const },
-});
+const stats = [
+  { end: 500, suffix: '+', label: 'Patients Served' },
+  { end: 2, suffix: 'M+', label: 'Reports Delivered' },
+  { end: 100, suffix: '+', label: 'Expert Specialists' },
+];
+const avatars = [
+  'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&h=80&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=80&h=80&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=80&h=80&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=80&h=80&fit=crop&crop=face',
+];
 
-const Hero = () => {
-  const pinkPlusRef = useRef<HTMLDivElement>(null);
-  const purplePlusRef = useRef<HTMLDivElement>(null);
-  const skyBluePlusRef = useRef<HTMLDivElement>(null);
-  const heartRef = useRef<HTMLDivElement>(null);
-  const arrowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    [pinkPlusRef, purplePlusRef, skyBluePlusRef].forEach((ref, i) => {
-      if (ref.current) {
-        gsap.to(ref.current, { y: -18, duration: 2.8 + i * 0.3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-      }
-    });
-    if (heartRef.current) {
-      gsap.to(heartRef.current, { y: -14, duration: 3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-    }
-    if (arrowRef.current) {
-      gsap.to(arrowRef.current, { y: -10, duration: 3.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-    }
-  }, []);
-
-  const stats = [
-    { value: 500, suffix: '+', label: 'Patients Served' },
-    { value: 2, suffix: 'M+', label: 'Reports Delivered' },
-    { value: 100, suffix: '+', label: 'Expert Specialists' },
-  ];
+export default function Hero() {
+  const [ref, inView] = useInView({ triggerOnce: true });
+  const words = ['YOUR', 'HEALTH', 'OUR', 'PRIORITY'];
 
   return (
-    <section id="home" className="relative min-h-screen lg:h-screen pt-20 overflow-hidden bg-[#e5f1f5] text-[#f5f5ff]">
-      {/* Background gradient blobs */}
-      <div className="absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-primary/5 blur-3xl -z-10" />
-      <div className="absolute bottom-0 left-0 w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full bg-primary/3 blur-3xl -z-10" />
+    <section className="hero-section bg-[#F8F9FF] pt-24 pb-16 lg:pt-32 lg:pb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-0 h-full">
-        {/* Left — Text content */}
-        <div className="relative z-10 flex flex-col justify-center pt-8 pb-6 sm:pt-10 sm:pb-8 lg:pt-0 lg:pb-0">
-          <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-5 text-secondary-foreground">
-            <img src="/Heart_message.svg" alt="" className="w-5 h-5" />
-            Solutions for Better Health
-          </motion.div>
-
-          <motion.h1 {...fadeUp(0.1)} className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[80px] font-extrabold font-heading text-foreground leading-[1.05] mb-5 sm:mb-7">
-            YOUR <span className="relative text-primary">
-              HEALTH
-              <img src="/Best_text.svg" alt="" className="absolute -top-8 sm:-top-10 -right-[40px] sm:-right-[54px] w-12 sm:w-16 h-10 sm:h-14 my-[16px] sm:my-[21px] mx-[16px] sm:mx-[20px] px-px py-0 hidden md:block" />
-            </span> OUR PRIORITY
-          </motion.h1>
-
-          <motion.p {...fadeUp(0.2)} className="text-muted-foreground max-w-lg mb-6 sm:mb-9 leading-relaxed text-sm sm:text-base">
-            we are dedicated to putting your health at the forefront of everything we do. Our compassionate team of healthcare.
-          </motion.p>
-
-          {/* CTA + Social proof row */}
-          <motion.div {...fadeUp(0.3)} className="flex flex-wrap items-center gap-4 sm:gap-6 mb-8 sm:mb-10">
-            <motion.a
-              href="#about"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-3.5 rounded-full text-sm font-medium shadow-lg shadow-primary/25"
-            >
-              Read More <ArrowRight className="w-4 h-4" />
-            </motion.a>
-
-            <div className="flex items-center gap-3">
-              <div className="flex -space-x-3">
-                {[
-                  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
-                  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face',
-                  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
-                ].map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Team member ${i + 1}`}
-                    className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-card object-cover"
-                  />
-                ))}
-                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-foreground border-2 border-card flex items-center justify-center">
-                  <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary-foreground" />
+          {/* Left */}
+          <motion.div
+            className="order-2 lg:order-1"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <Heart size={14} className="text-red-500 fill-red-500" />
+              <span className="text-xs font-semibold tracking-widest text-red-500 uppercase">Solutions For Better Health</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-display leading-tight text-slate-900 mb-6">
+              {words.map((w, i) => (
+                <motion.span
+                  key={w}
+                  className={w === 'HEALTH' ? 'text-indigo-600' : ''}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                >
+                  {w}{' '}
+                </motion.span>
+              ))}
+            </h1>
+            <p className="text-slate-500 text-lg leading-relaxed mb-8 max-w-md">
+              We are dedicated to putting your health at the forefront of everything we do. Our compassionate team of healthcare professionals is here for you.
+            </p>
+            <div className="flex items-center gap-4 flex-wrap">
+              <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full font-semibold transition-colors group">
+                Read More
+                <motion.span whileHover={{ x: 4 }}><ArrowRight size={18} /></motion.span>
+              </button>
+              <div className="flex items-center gap-3">
+                <div className="flex">
+                  {avatars.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt="team"
+                      loading="lazy"
+                      className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                      style={{ marginLeft: i === 0 ? 0 : -10 }}
+                    />
+                  ))}
+                  <div
+                    className="w-10 h-10 rounded-full bg-indigo-600 border-2 border-white flex items-center justify-center text-white text-xs font-bold"
+                    style={{ marginLeft: -10 }}
+                  >
+                    +
+                  </div>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">2000+</p>
+                  <p className="text-xs text-slate-500">Experience Team</p>
                 </div>
               </div>
-              <div>
-                <span className="text-sm font-bold text-foreground">2000+</span>
-                <p className="text-xs text-muted-foreground">Experience Team</p>
-              </div>
+            </div>
+            <div ref={ref} className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-slate-100">
+              {stats.map(s => (
+                <div key={s.label}>
+                  <p className="text-4xl font-extrabold font-display text-slate-900">
+                    {inView ? <CountUp end={s.end} suffix={s.suffix} duration={2.5} /> : '0'}
+                  </p>
+                  <p className="text-sm text-slate-500 mt-1">{s.label}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Stats */}
-          <motion.div {...fadeUp(0.5)} className="flex items-center gap-6 sm:gap-8 lg:gap-10">
-            {stats.map((s) => (
-              <div key={s.label} className="relative">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-heading text-foreground">
-                  <AnimatedCounter end={s.value} suffix={s.suffix} className="text-center text-secondary-foreground border-0" />
-                </div>
-                <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">{s.label}</p>
-                {s.label === 'Expert Specialists' && (
-                  <div ref={skyBluePlusRef} className="absolute -top-4 right-[-105px] md:-top-12 md:right-[-60px] lg:-top-4 lg:right-[-105px] z-20 hidden md:block">
-                    <img src="/Skyblue_Pluse.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10" />
-                  </div>
-                )}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Right — Doctor image + decorative SVGs */}
-        <div className="relative flex justify-center lg:justify-end items-end h-[50vh] sm:h-[55vh] md:h-[50vh] lg:h-full overflow-visible">
-          
-          {/* Doctor image */}
+          {/* Right */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            className="order-1 lg:order-2 relative h-[420px] sm:h-[500px] lg:h-[600px]"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="absolute bottom-0 left-0 right-0 h-full flex items-end justify-center lg:justify-end z-0"
           >
-            <img
-              src="/Hero_Doctor_Image.svg"
-              alt="Professional doctor in blue scrubs with stethoscope"
-              className="max-h-full md:max-h-[45vh] lg:max-h-[calc(100vh-5rem)] w-auto object-contain object-bottom"
-            />
+            <div className="absolute inset-0 overflow-hidden rounded-3xl">
+              <img
+                className="hero-image w-full h-full object-cover object-top"
+                alt="Doctor"
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&h=700&fit=crop&crop=top"
+              />
+            </div>
+            <div className="float-el absolute -top-3 -right-3 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+              <Plus size={20} color="white" />
+            </div>
+            <div className="float-el absolute bottom-24 -left-3 w-8 h-8 bg-pink-400 rounded-full flex items-center justify-center shadow-lg">
+              <Plus size={16} color="white" />
+            </div>
+            <div className="absolute top-1/3 -left-6 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center">
+              <Heart size={24} className="text-indigo-600 fill-indigo-100" />
+            </div>
           </motion.div>
-
-          {/* Decorative elements — hidden on mobile, visible on lg+ */}
-          {/* Heart message bubble */}
-          <div ref={heartRef} className="absolute top-[20%] left-[5%] md:top-[52%] md:left-[-2%] lg:top-[20%] lg:left-[5%] z-20 hidden md:block">
-            <img src="/Heart_message.svg" alt="" className="w-20 h-20 md:w-24 md:h-24 lg:w-36 lg:h-36 drop-shadow-2xl" />
-          </div>
-
-          {/* Pink cross */}
-          <div ref={pinkPlusRef} className="absolute top-[6%] right-[18%] md:top-[2%] md:right-[5%] lg:top-[6%] lg:right-[18%] z-20 hidden md:block">
-            <img src="/Pink_Bless.svg" alt="" className="w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14" />
-          </div>
-
-          {/* Arrow/scribble */}
-          <div ref={arrowRef} className="absolute top-[25%] right-[-3%] md:top-[8%] md:right-[-2%] lg:top-[25%] lg:right-[-3%] z-10 hidden md:block">
-            <img src="/Simple_writing.svg" alt="" className="w-32 h-16 md:w-36 md:h-18 lg:w-56 lg:h-24 -rotate-[5deg]" />
-          </div>
-
-          {/* Purple cross */}
-          <div ref={purplePlusRef} className="absolute bottom-[100px] right-[calc(2%+10px)] md:bottom-[60px] md:right-[2%] lg:bottom-[100px] lg:right-[calc(2%+10px)] z-20 hidden md:block">
-            <img src="/Purple_place.svg" alt="" className="w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14" />
-          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

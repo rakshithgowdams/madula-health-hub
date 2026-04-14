@@ -1,41 +1,49 @@
 import { ShieldCheck, Heart } from 'lucide-react';
+import AnimatedSection from './AnimatedSection';
 
-const WhyChooseUs = () => (
-  <section className="py-20 lg:py-28">
-    <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
-      <div className="relative">
-        <div className="absolute inset-0 border-2 border-primary rounded-2xl rotate-3 -z-10" />
-        <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=500" alt="Doctors collaborating" className="rounded-2xl w-full object-cover shadow-lg" loading="lazy" />
-        <div className="absolute -bottom-6 -right-6 w-20 h-20">
-          <svg viewBox="0 0 100 100" className="animate-spin-slow w-full h-full">
-            <defs><path id="circleWhy" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /></defs>
-            <text fontSize="9" fontWeight="600" fill="hsl(var(--primary))"><textPath href="#circleWhy">MADULA MEDICAL • DOCTORS SEARCH •</textPath></text>
-          </svg>
+const features = [
+  { Icon: ShieldCheck, bg: 'bg-pink-100', color: 'text-pink-600', title: 'Expert Professionals', desc: 'Our highly skilled doctors, nurses, and specialists bring years of experience and a commitment to excellence in every service we provide.' },
+  { Icon: Heart, bg: 'bg-teal-100', color: 'text-teal-600', title: 'Beyond treatments', desc: 'Our highly skilled doctors, nurses, and specialists bring years of experience and a commitment to excellence in every service we provide.' },
+];
+
+export default function WhyChooseUs() {
+  return (
+    <section className="bg-[#F8F9FF] py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <AnimatedSection direction="left">
+            <div className="relative">
+              <div className="rotate-3 rounded-3xl overflow-hidden shadow-2xl" style={{ aspectRatio: '4/5' }}>
+                <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=500&h=600&fit=crop"
+                  alt="Doctor" loading="lazy" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-indigo-600 rounded-2xl opacity-20" />
+            </div>
+          </AnimatedSection>
+          <AnimatedSection direction="right">
+            <p className="text-indigo-600 text-sm font-semibold mb-2"># Why Choose Us</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-display text-slate-900 mb-6">
+              Where Compassion Meets Expertise.
+            </h2>
+            <p className="text-slate-500 leading-relaxed mb-10">
+              We believe healthcare is not just about treating illnesses — it's about caring for people. With a perfect balance of compassion and expertise, our team is dedicated to providing exceptional medical care.
+            </p>
+            <div className="space-y-6">
+              {features.map(({ Icon, bg, color, title, desc }) => (
+                <div key={title} className="flex items-start gap-5">
+                  <div className={`w-14 h-14 ${bg} rounded-2xl flex items-center justify-center flex-shrink-0`}>
+                    <Icon size={24} className={color} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-1">{title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </div>
-      <div>
-        <span className="text-sm font-semibold text-primary block"># Why Choose Us</span>
-        <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2 mb-4">Where Compassion Meets Expertise.</h2>
-        <p className="text-muted-foreground leading-relaxed mb-8">We combine cutting-edge medical technology with compassionate care to deliver the best outcomes for our patients.</p>
-        <div className="space-y-6">
-          <div className="flex gap-4">
-            <div className="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center shrink-0"><ShieldCheck className="w-6 h-6 text-pink-600" /></div>
-            <div>
-              <h3 className="font-bold font-heading text-foreground mb-1">Expert Professionals</h3>
-              <p className="text-sm text-muted-foreground">Our team consists of board-certified specialists with decades of combined experience.</p>
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <div className="w-14 h-14 rounded-full bg-teal-100 flex items-center justify-center shrink-0"><Heart className="w-6 h-6 text-teal-600" /></div>
-            <div>
-              <h3 className="font-bold font-heading text-foreground mb-1">Beyond Treatments</h3>
-              <p className="text-sm text-muted-foreground">We focus on holistic wellness, addressing not just symptoms but overall well-being.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-export default WhyChooseUs;
+    </section>
+  );
+}
