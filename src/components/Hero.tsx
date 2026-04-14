@@ -38,7 +38,7 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen lg:h-screen pt-20 overflow-hidden bg-[#e5f1f5]">
+    <section id="home" className="relative min-h-screen lg:h-screen pt-20 overflow-hidden bg-[#e5f1f5] text-[#f5f5ff]">
       {/* Background gradient blobs */}
       <div className="absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-primary/5 blur-3xl -z-10" />
       <div className="absolute bottom-0 left-0 w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full bg-primary/3 blur-3xl -z-10" />
