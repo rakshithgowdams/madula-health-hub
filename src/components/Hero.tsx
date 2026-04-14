@@ -116,29 +116,29 @@ const Hero = () => {
         {/* Right — Doctor image + decorative SVGs */}
         <div className="relative flex justify-center lg:justify-end items-end h-full overflow-visible">
           
-          {/* Pink cross - top right area */}
-          <div ref={pinkPlusRef} className="absolute top-[4%] right-[5%] z-20">
-            <img src="/Pink_Bless.svg" alt="" className="w-20 h-20 lg:w-24 lg:h-24" />
+          {/* Heart message bubble - near doctor's left shoulder */}
+          <div ref={heartRef} className="absolute top-[18%] left-[8%] z-20">
+            <img src="/Heart_message.svg" alt="" className="w-24 h-24 lg:w-32 lg:h-32 drop-shadow-2xl" />
           </div>
 
-          {/* Sky blue cross - top left area */}
-          <div ref={skyBluePlusRef} className="absolute top-[15%] left-[5%] z-20">
-            <img src="/Skyblue_Pluse.svg" alt="" className="w-16 h-16 lg:w-20 lg:h-20" />
+          {/* Pink cross - top right near doctor's head */}
+          <div ref={pinkPlusRef} className="absolute top-[8%] right-[15%] z-20">
+            <img src="/Pink_Bless.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10" />
           </div>
 
-          {/* Heart message bubble - near doctor's shoulder/head area */}
-          <div ref={heartRef} className="absolute top-[12%] left-[12%] z-20">
-            <img src="/Heart_message.svg" alt="" className="w-44 h-44 lg:w-56 lg:h-56 drop-shadow-2xl mx-0 px-0 py-0 my-[240px]" />
+          {/* Arrow/scribble - right side near doctor's chest */}
+          <div ref={arrowRef} className="absolute top-[22%] right-[-5%] z-10">
+            <img src="/Simple_writing.svg" alt="" className="w-40 h-20 lg:w-52 lg:h-24" />
           </div>
 
-          {/* Arrow/scribble - pointing toward doctor from right side */}
-          <div ref={arrowRef} className="absolute top-[25%] right-[-2%] z-10">
-            <img src="/Simple_writing.svg" alt="" className="w-52 h-24 lg:w-72 lg:h-28" />
+          {/* Sky blue cross - bottom left near stats */}
+          <div ref={skyBluePlusRef} className="absolute bottom-[18%] left-[45%] z-20">
+            <img src="/Skyblue_Pluse.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10" />
           </div>
 
           {/* Purple cross - bottom right */}
-          <div ref={purplePlusRef} className="absolute bottom-[15%] right-[-3%] z-20">
-            <img src="/Purple_place.svg" alt="" className="w-20 h-20 lg:w-24 lg:h-24" />
+          <div ref={purplePlusRef} className="absolute bottom-[22%] right-[0%] z-20">
+            <img src="/Purple_place.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10" />
           </div>
 
           {/* Doctor image — flush to bottom */}
