@@ -56,7 +56,7 @@ const Hero = () => {
             YOUR <span className="relative text-primary">
               HEALTH
               {/* Best_text decorative marks above HEALTH */}
-              <img src="/Best_text.svg" alt="" className="absolute -top-10 -right-4 w-16 h-14" />
+              <img src="/Best_text.svg" alt="" className="absolute -top-10 -right-[54px] w-16 h-14" />
             </span> OUR PRIORITY
           </motion.h1>
 
