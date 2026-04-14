@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -69,6 +71,7 @@
 @layer base {
   * {
     @apply border-border;
+    cursor: none;
   }
   body {
     @apply bg-background text-foreground;
@@ -89,22 +92,19 @@
   .font-body {
     font-family: 'Inter', sans-serif;
   }
+  .font-display {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
 }
 
 /* Marquee animation */
-@keyframes marquee-left {
+@keyframes scrollLeft {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-@keyframes marquee-right {
+@keyframes scrollRight {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
-}
-.animate-marquee-left {
-  animation: marquee-left 30s linear infinite;
-}
-.animate-marquee-right {
-  animation: marquee-right 30s linear infinite;
 }
 
 /* Rotating badge */
@@ -126,6 +126,9 @@
   z-index: 9999;
   mix-blend-mode: difference;
   transition: transform 0.15s ease-out;
+}
+.custom-cursor.big {
+  transform: scale(3);
 }
 
 /* Pulse glow for featured card */
