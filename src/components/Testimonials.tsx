@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Star, Quote, ArrowLeft, ArrowRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
@@ -22,10 +21,8 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} className="text-sm font-semibold text-primary"># Testimonials</motion.span>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">
-              What Our Patients Say?
-            </motion.h2>
+            <span className="text-sm font-semibold text-primary block"># Testimonials</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">What Our Patients Say?</h2>
           </div>
           <div className="flex gap-2">
             <button onClick={scrollPrev} className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Previous"><ArrowLeft className="w-4 h-4" /></button>
@@ -36,19 +33,10 @@ const Testimonials = () => {
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-6">
             {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ delay: i * 0.1 }}
-                className="flex-[0_0_100%] md:flex-[0_0_48%] min-w-0 bg-card border rounded-2xl p-6 relative"
-              >
+              <div key={i} className="flex-[0_0_100%] md:flex-[0_0_48%] min-w-0 bg-card border rounded-2xl p-6 relative">
                 <Quote className="absolute top-4 right-4 w-10 h-10 text-border" />
                 <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, si) => (
-                    <Star key={si} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  ))}
+                  {[...Array(5)].map((_, si) => (<Star key={si} className="w-4 h-4 text-yellow-400 fill-yellow-400" />))}
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">"{t.text}"</p>
                 <div className="flex items-center gap-3">
@@ -58,17 +46,14 @@ const Testimonials = () => {
                     <p className="text-xs text-muted-foreground">{t.title}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Partner logos */}
         <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mt-16">
           {partners.map((p) => (
-            <span key={p} className="text-lg font-bold text-foreground/30 hover:text-foreground/80 transition-colors cursor-pointer font-heading">
-              {p}
-            </span>
+            <span key={p} className="text-lg font-bold text-foreground/30 hover:text-foreground/80 transition-colors cursor-pointer font-heading">{p}</span>
           ))}
         </div>
       </div>
