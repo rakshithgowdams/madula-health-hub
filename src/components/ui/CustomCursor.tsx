@@ -1,31 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
-const CustomCursor = () => {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [visible, setVisible] = useState(false);
-
+export default function CustomCursor() {
+  const dot = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const move = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      setVisible(true);
+      if (!dot.current) return;
+      dot.current.style.left = e.clientX + 'px';
+      dot.current.style.top = e.clientY + 'px';
     };
-    const leave = () => setVisible(false);
+    const grow = () => dot.current?.classList.add('big');
+    const shrink = () => dot.current?.classList.remove('big');
     window.addEventListener('mousemove', move);
-    document.addEventListener('mouseleave', leave);
-    return () => {
-      window.removeEventListener('mousemove', move);
-      document.removeEventListener('mouseleave', leave);
-    };
+    document.querySelectorAll('a,button').forEach(el => {
+      el.addEventListener('mouseenter', grow);
+      el.addEventListener('mouseleave', shrink);
+    });
+    return () => window.removeEventListener('mousemove', move);
   }, []);
-
-  if (!visible) return null;
-
   return (
     <div
-      className="custom-cursor bg-primary hidden md:block"
-      style={{ left: pos.x - 6, top: pos.y - 6 }}
+      ref={dot}
+      className="custom-cursor bg-indigo-600 pointer-events-none fixed z-[9999] rounded-full mix-blend-difference transition-transform duration-150"
+      style={{ width: 12, height: 12 }}
     />
   );
-};
-
-export default CustomCursor;
+}

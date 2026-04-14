@@ -1,44 +1,67 @@
 import { motion } from 'framer-motion';
-import { CheckCircle, ArrowRight, Star } from 'lucide-react';
+import { Check, ArrowRight, X, Star } from 'lucide-react';
+import AnimatedSection from './AnimatedSection';
 
-const plans = [
-  { name: 'Basic Plan', price: 150, featured: true, icon: null },
-  { name: 'Standard', price: 380, featured: false, icon: null },
-  { name: 'Premium', price: 550, featured: false, icon: Star },
+const features = [
+  'Seasonal health check-up packages',
+  'Packages for routine check-ups',
+  'Acceptance of major insurance plans',
+  'Interest-free installment options',
+  'Tailored health plans to suit individual',
 ];
 
-const features = ['Full Body Checkup', 'Doctor Consultation', 'Dental Care Package', '24/7 Emergency Support', 'Lab Tests Included'];
+const plans = [
+  { name: 'Basic Plan', price: 150, featured: true },
+  { name: 'Standard', price: 380, featured: false },
+  { name: 'Premium', price: 550, featured: false, star: true },
+];
 
-const Pricing = () => (
-  <section id="pricing" className="py-20 lg:py-28" style={{ backgroundColor: '#F0F0FF' }}>
-    <div className="max-w-7xl mx-auto px-4 lg:px-8">
-      <div className="text-center mb-12">
-        <span className="text-sm font-semibold text-primary block"># Pricing Plan</span>
-        <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-foreground mt-2">Flexible Options for Every Patient.</h2>
+export default function Pricing() {
+  return (
+    <section className="bg-[#F0F0FF] py-16 lg:py-24 relative overflow-hidden">
+      <X size={32} className="text-indigo-200 absolute top-12 left-12" />
+      <X size={32} className="text-indigo-200 absolute bottom-12 right-12" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection>
+          <div className="text-center mb-16">
+            <p className="text-indigo-600 text-sm font-semibold mb-2"># Pricing Table</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-display text-slate-900">Flexible Options for Every Patient.</h2>
+          </div>
+        </AnimatedSection>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          {plans.map(({ name, price, featured, star }, i) => (
+            <motion.div
+              key={name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
+              whileHover={!featured ? { scale: 1.02, boxShadow: '0 20px 40px rgba(79,70,229,.15)' } : {}}
+              className={`rounded-3xl p-8 ${featured ? 'bg-indigo-600 text-white shadow-2xl lg:scale-105 z-10' : 'bg-white border border-slate-100'}`}
+            >
+              <p className={`text-sm font-semibold mb-2 ${featured ? 'text-indigo-200' : 'text-slate-500'}`}>{name}</p>
+              <div className="flex items-baseline gap-1 mb-1">
+                {star && <Star size={16} className="text-yellow-400 fill-yellow-400 mb-1" />}
+                <span className={`text-5xl font-extrabold font-display ${featured ? 'text-white' : 'text-slate-900'}`}>{price}</span>
+                <span className={featured ? 'text-indigo-300' : 'text-slate-400'}>/Usd</span>
+              </div>
+              <p className={`text-sm mb-6 ${featured ? 'text-indigo-200' : 'text-slate-400'}`}>Primary Health Check-Up</p>
+              <div className={`border-t ${featured ? 'border-indigo-500' : 'border-slate-100'} my-6`} />
+              <ul className="space-y-3 mb-8">
+                {features.map(f => (
+                  <li key={f} className={`flex items-start gap-3 text-sm ${featured ? 'text-indigo-100' : 'text-slate-600'}`}>
+                    <Check size={16} className={`${featured ? 'text-indigo-300' : 'text-indigo-600'} mt-0.5 flex-shrink-0`} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <button className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm w-full justify-center transition-colors ${featured ? 'bg-white text-indigo-600 hover:bg-indigo-50' : 'border border-slate-200 text-slate-700 hover:border-indigo-600 hover:text-indigo-600'}`}>
+                Pick This Package <ArrowRight size={16} />
+              </button>
+            </motion.div>
+          ))}
+        </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {plans.map((plan, i) => (
-          <motion.div key={i} whileHover={!plan.featured ? { scale: 1.02 } : {}} className={`rounded-2xl p-8 ${plan.featured ? 'bg-primary text-primary-foreground animate-pulse-glow' : 'bg-card border hover:border-primary transition-colors'}`}>
-            <div className="flex items-center gap-2 mb-4">
-              <h3 className="text-lg font-bold font-heading">{plan.name}</h3>
-              {plan.icon && <plan.icon className="w-5 h-5 text-yellow-400" />}
-            </div>
-            <div className="mb-6"><span className="text-4xl font-extrabold font-heading">${plan.price}</span><span className="text-sm opacity-70">/Usd</span></div>
-            <ul className="space-y-3 mb-8">
-              {features.map((f, fi) => (
-                <li key={fi} className="flex items-center gap-2 text-sm">
-                  <CheckCircle className={`w-4 h-4 shrink-0 ${plan.featured ? 'text-primary-foreground' : 'text-primary'}`} />{f}
-                </li>
-              ))}
-            </ul>
-            <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className={`w-full py-3 rounded-full text-sm font-medium inline-flex items-center justify-center gap-2 ${plan.featured ? 'bg-card text-primary' : 'border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors'}`}>
-              Pick This Package <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-export default Pricing;
+    </section>
+  );
+}
