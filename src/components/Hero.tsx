@@ -116,37 +116,12 @@ const Hero = () => {
         {/* Right — Doctor image + decorative SVGs */}
         <div className="relative flex justify-center lg:justify-end items-end h-full overflow-visible">
           
-          {/* Heart message bubble - near doctor's left shoulder */}
-          <div ref={heartRef} className="absolute top-[18%] left-[8%] z-20">
-            <img src="/Heart_message.svg" alt="" className="w-24 h-24 lg:w-32 lg:h-32 drop-shadow-2xl" />
-          </div>
-
-          {/* Pink cross - top right near doctor's head */}
-          <div ref={pinkPlusRef} className="absolute top-[8%] right-[15%] z-20">
-            <img src="/Pink_Bless.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10" />
-          </div>
-
-          {/* Arrow/scribble - right side near doctor's chest */}
-          <div ref={arrowRef} className="absolute top-[22%] right-[-5%] z-10">
-            <img src="/Simple_writing.svg" alt="" className="w-40 h-20 lg:w-52 lg:h-24" />
-          </div>
-
-          {/* Sky blue cross - bottom left near stats */}
-          <div ref={skyBluePlusRef} className="absolute bottom-[18%] left-[45%] z-20">
-            <img src="/Skyblue_Pluse.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10" />
-          </div>
-
-          {/* Purple cross - bottom right */}
-          <div ref={purplePlusRef} className="absolute bottom-[22%] right-[0%] z-20">
-            <img src="/Purple_place.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10" />
-          </div>
-
-          {/* Doctor image — flush to bottom */}
+          {/* Doctor image — flush to bottom, rendered first so decorations layer on top */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="absolute bottom-0 left-0 right-0 h-full flex items-end justify-center lg:justify-end"
+            className="absolute bottom-0 left-0 right-0 h-full flex items-end justify-center lg:justify-end z-0"
           >
             <img
               src="/Hero_Doctor_Image.svg"
@@ -154,6 +129,31 @@ const Hero = () => {
               className="max-h-[calc(100vh-5rem)] w-auto object-contain object-bottom"
             />
           </motion.div>
+
+          {/* Heart message bubble - to the left of doctor's head */}
+          <div ref={heartRef} className="absolute top-[20%] left-[5%] z-20">
+            <img src="/Heart_message.svg" alt="" className="w-28 h-28 lg:w-36 lg:h-36 drop-shadow-2xl" />
+          </div>
+
+          {/* Pink cross - top right above doctor */}
+          <div ref={pinkPlusRef} className="absolute top-[6%] right-[18%] z-20">
+            <img src="/Pink_Bless.svg" alt="" className="w-10 h-10 lg:w-14 lg:h-14" />
+          </div>
+
+          {/* Arrow/scribble - right side near doctor's shoulder */}
+          <div ref={arrowRef} className="absolute top-[25%] right-[-3%] z-10">
+            <img src="/Simple_writing.svg" alt="" className="w-44 h-20 lg:w-56 lg:h-24" />
+          </div>
+
+          {/* Sky blue cross - near stats area, lower left */}
+          <div ref={skyBluePlusRef} className="absolute bottom-[20%] left-[42%] z-20">
+            <img src="/Skyblue_Pluse.svg" alt="" className="w-10 h-10 lg:w-12 lg:h-12" />
+          </div>
+
+          {/* Purple cross - bottom right */}
+          <div ref={purplePlusRef} className="absolute bottom-[25%] right-[2%] z-20">
+            <img src="/Purple_place.svg" alt="" className="w-10 h-10 lg:w-14 lg:h-14" />
+          </div>
         </div>
       </div>
     </section>
