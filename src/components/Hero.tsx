@@ -117,7 +117,7 @@ const Hero = () => {
         </div>
 
         {/* Right — Doctor image + decorative SVGs */}
-        <div className="relative flex justify-center lg:justify-end items-end h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-full overflow-visible">
+        <div className="relative flex justify-center lg:justify-end items-end h-[50vh] sm:h-[55vh] md:h-[50vh] lg:h-full overflow-visible">
           
           {/* Doctor image */}
           <motion.div
@@ -129,7 +129,7 @@ const Hero = () => {
             <img
               src="/Hero_Doctor_Image.svg"
               alt="Professional doctor in blue scrubs with stethoscope"
-              className="max-h-full lg:max-h-[calc(100vh-5rem)] w-auto object-contain object-bottom"
+              className="max-h-full md:max-h-[45vh] lg:max-h-[calc(100vh-5rem)] w-auto object-contain object-bottom"
             />
           </motion.div>
 
