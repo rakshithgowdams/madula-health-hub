@@ -108,8 +108,8 @@ export default function Hero() {
                 src="/Dr._Hero_section_Image.svg"
               />
             </div>
-            <div className="float-el absolute -top-3 -right-3 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-              <Plus size={20} color="white" />
+            <div className="float-el absolute -top-3 -right-3 w-10 h-10 flex items-center justify-center">
+              <img src="/Purple_place-2.svg" alt="" className="w-10 h-10" />
             </div>
             <div className="float-el absolute bottom-24 -left-3 w-8 h-8 flex items-center justify-center">
               <img src="/Pink_Bless-2.svg" alt="" className="w-8 h-8" />
