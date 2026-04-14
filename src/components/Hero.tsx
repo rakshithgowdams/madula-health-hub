@@ -147,13 +147,13 @@ const Hero = () => {
 
           {/* Arrow/scribble - right side near doctor's shoulder */}
           <div ref={arrowRef} className="absolute top-[25%] right-[-3%] z-10">
-            <img src="/Simple_writing.svg" alt="" className="w-44 h-20 lg:w-56 lg:h-24 mx-[27px] my-[240px] -rotate-[5deg]" />
+            <img src="/Simple_writing.svg" alt="" className="w-44 h-20 lg:w-56 lg:h-24 mx-[27px] -rotate-[5deg] my-[219px]" />
           </div>
 
 
           {/* Purple cross - bottom right */}
           <div ref={purplePlusRef} className="absolute bottom-[25%] right-[2%] z-20">
-            <img src="/Purple_place.svg" alt="" className="w-10 h-10 lg:w-14 lg:h-14" />
+            <img src="/Purple_place.svg" alt="" className="w-10 h-10 lg:w-14 lg:h-14 px-0 my-0 mx-[8px]" />
           </div>
         </div>
       </div>
