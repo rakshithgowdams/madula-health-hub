@@ -115,7 +115,20 @@ export default function Hero() {
               <Plus size={16} color="white" />
             </div>
             <div className="absolute top-1/3 -left-6">
-              <img src="/Heart_message-2.svg" alt="" className="w-20 h-20 drop-shadow-xl" />
+              <motion.img
+                src="/Heart_message-2.svg"
+                alt=""
+                className="w-20 h-20 drop-shadow-xl"
+                animate={{
+                  y: [0, -8, 0],
+                  scale: [1, 1.08, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              />
             </div>
           </motion.div>
         </div>
