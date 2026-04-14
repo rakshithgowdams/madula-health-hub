@@ -101,7 +101,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Doctor image — overflow hidden only on this wrapper */}
-            <div className="overflow-hidden max-h-[320px] sm:max-h-[400px] lg:max-h-[600px]">
+            <div className="overflow-hidden max-h-[450px] sm:max-h-[520px] md:max-h-[560px] lg:max-h-[600px]">
               <img
                 className="hero-image w-full h-auto block"
                 alt="Doctor"
