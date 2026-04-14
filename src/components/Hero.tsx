@@ -152,7 +152,7 @@ const Hero = () => {
 
 
           {/* Purple cross - bottom right */}
-          <div ref={purplePlusRef} className="absolute bottom-[100px] right-[2%] z-20">
+          <div ref={purplePlusRef} className="absolute bottom-[100px] right-[calc(2%+10px)] z-20">
             <img src="/Purple_place.svg" alt="" className="w-10 h-10 lg:w-14 lg:h-14 px-0 my-px mx-0" />
           </div>
         </div>
