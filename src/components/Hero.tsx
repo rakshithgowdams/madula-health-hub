@@ -111,8 +111,8 @@ export default function Hero() {
             <div className="float-el absolute -top-3 -right-3 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
               <Plus size={20} color="white" />
             </div>
-            <div className="float-el absolute bottom-24 -left-3 w-8 h-8 bg-pink-400 rounded-full flex items-center justify-center shadow-lg">
-              <Plus size={16} color="white" />
+            <div className="float-el absolute bottom-24 -left-3 w-8 h-8 flex items-center justify-center">
+              <img src="/Pink_Bless-2.svg" alt="" className="w-8 h-8" />
             </div>
             <div className="absolute top-1/3 -left-6">
               <motion.img
