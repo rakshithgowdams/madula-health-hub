@@ -136,7 +136,7 @@ const Hero = () => {
 
           {/* Heart bubble icon - left of doctor */}
           <div ref={heartRef} className="absolute top-1/4 left-8 lg:left-0 z-20">
-            <img src={heartBubble} alt="" className="w-20 h-20 lg:w-24 lg:h-24" />
+            <img src="/cda3948b-d374-4a62-a91a-b90bfb53dcbf.png" alt="" className="w-20 h-20 lg:w-24 lg:h-24 text-left mx-[150px] rounded-none object-fill" />
           </div>
 
           {/* Blue cross - bottom right */}
@@ -160,7 +160,7 @@ const Hero = () => {
             className="relative"
           >
             <img
-              src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600"
+              src="/5039dbbb-ad12-4b6a-9d81-cba8266a870b.png"
               alt="Professional doctor in blue scrubs with stethoscope"
               className="rounded-3xl w-full max-w-md lg:max-w-lg xl:max-w-xl object-cover"
             />
