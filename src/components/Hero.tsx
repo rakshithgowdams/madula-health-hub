@@ -2,10 +2,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Plus, ArrowRight } from 'lucide-react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedCounter from './ui/AnimatedCounter';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 30 },
@@ -14,31 +11,18 @@ const fadeUp = (delay: number) => ({
 });
 
 const Hero = () => {
-  const imageRef = useRef<HTMLDivElement>(null);
   const plusRef1 = useRef<HTMLDivElement>(null);
   const plusRef2 = useRef<HTMLDivElement>(null);
   const heartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (imageRef.current) {
-      gsap.to(imageRef.current, {
-        y: -30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      });
-    }
     [plusRef1, plusRef2].forEach((ref) => {
       if (ref.current) {
         gsap.to(ref.current, { y: -15, duration: 3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
       }
     });
     if (heartRef.current) {
-      gsap.to(heartRef.current, { y: -10, duration: 2.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+      gsap.to(heartRef.current, { y: -12, duration: 2.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
     }
   }, []);
 
@@ -62,8 +46,16 @@ const Hero = () => {
             Solutions for Better Health
           </motion.div>
 
-          <motion.h1 {...fadeUp(0.1)} className="text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-extrabold font-heading text-foreground leading-[1.05] mb-7">
-            YOUR <span className="text-primary">HEALTH</span> OUR PRIORITY
+          <motion.h1 {...fadeUp(0.1)} className="relative text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-extrabold font-heading text-foreground leading-[1.05] mb-7">
+            YOUR <span className="relative text-primary">
+              HEALTH
+              {/* Decorative pink marks above HEALTH */}
+              <svg className="absolute -top-5 right-0 w-10 h-8" viewBox="0 0 40 30" fill="none">
+                <path d="M10 25L15 5" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M20 22L25 8" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M30 25L33 12" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
+            </span> OUR PRIORITY
           </motion.h1>
 
           <motion.p {...fadeUp(0.2)} className="text-muted-foreground max-w-lg mb-9 leading-relaxed text-base">
@@ -124,42 +116,44 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Right — Doctor image touching bottom */}
-        <div className="relative flex justify-center lg:justify-end items-end h-full">
-          {/* Pink cross - top right, away from doctor */}
-          <div ref={plusRef1} className="absolute top-[8%] right-[5%] z-20">
-            <Plus className="w-12 h-12 text-pink-500" strokeWidth={3} />
+        {/* Right — Doctor image flush to bottom */}
+        <div className="relative flex justify-center lg:justify-end items-end h-full overflow-visible">
+          {/* Pink cross - top right */}
+          <div ref={plusRef1} className="absolute top-[6%] right-[8%] z-20">
+            <Plus className="w-16 h-16 text-pink-500" strokeWidth={2.5} />
           </div>
 
-          {/* Heart bubble icon - between text and doctor */}
-          <div ref={heartRef} className="absolute top-[30%] left-[25%] z-20">
-            <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-40 h-40 lg:w-52 lg:h-52 drop-shadow-xl" />
+          {/* Heart bubble icon - near doctor's shoulder */}
+          <div ref={heartRef} className="absolute top-[28%] left-[18%] z-20">
+            <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-28 h-28 lg:w-32 lg:h-32 drop-shadow-xl" />
           </div>
 
-          {/* Decorative scribble/arrow pointing toward doctor */}
-          <div className="absolute top-[35%] right-[-2%] z-10 opacity-90">
-            <svg width="100" height="80" viewBox="0 0 80 70" fill="none">
-              <path d="M5 65C20 30 50 12 75 5" stroke="hsl(var(--foreground))" strokeWidth="3" strokeLinecap="round" />
-              <path d="M62 2L75 5L70 18" stroke="hsl(var(--foreground))" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          {/* Decorative scribble/arrow - large, pointing toward doctor */}
+          <div className="absolute top-[30%] right-[-4%] z-10">
+            <svg width="160" height="140" viewBox="0 0 160 140" fill="none">
+              <path d="M10 130C30 80 70 40 130 15" stroke="hsl(var(--foreground))" strokeWidth="4" strokeLinecap="round" />
+              <path d="M110 5L132 14L120 35" stroke="hsl(var(--foreground))" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+              {/* Extra decorative swoosh lines */}
+              <path d="M125 20C135 25 145 18 150 10" stroke="hsl(var(--foreground))" strokeWidth="3" strokeLinecap="round" />
             </svg>
           </div>
 
-          {/* Purple cross - bottom right, away from doctor */}
-          <div ref={plusRef2} className="absolute bottom-[15%] right-[-3%] z-20">
-            <Plus className="w-12 h-12 text-purple-500" strokeWidth={3} />
+          {/* Purple cross - bottom right */}
+          <div ref={plusRef2} className="absolute bottom-[12%] right-[-5%] z-20">
+            <Plus className="w-16 h-16 text-purple-500" strokeWidth={2.5} />
           </div>
 
+          {/* Doctor image — absolutely flush to bottom, no margin/padding */}
           <motion.div
-            ref={imageRef}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex items-end mt-auto"
+            className="absolute bottom-0 right-0 lg:right-[-5%] h-full flex items-end"
           >
             <img
               src="/b1ab3f0d-41a7-4b12-878e-10d112ead6b4.png"
               alt="Professional doctor in blue scrubs with stethoscope"
-              className="w-auto max-h-[calc(100vh-5rem)] object-contain block leading-none align-bottom"
+              className="h-[95%] w-auto object-contain object-bottom"
             />
           </motion.div>
         </div>
