@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Plus, ArrowRight } from 'lucide-react';
+import { ArrowRight, Plus } from 'lucide-react';
 import { gsap } from 'gsap';
 import AnimatedCounter from './ui/AnimatedCounter';
 
@@ -11,18 +11,24 @@ const fadeUp = (delay: number) => ({
 });
 
 const Hero = () => {
-  const plusRef1 = useRef<HTMLDivElement>(null);
-  const plusRef2 = useRef<HTMLDivElement>(null);
+  const pinkPlusRef = useRef<HTMLDivElement>(null);
+  const purplePlusRef = useRef<HTMLDivElement>(null);
+  const skyBluePlusRef = useRef<HTMLDivElement>(null);
   const heartRef = useRef<HTMLDivElement>(null);
+  const arrowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    [plusRef1, plusRef2].forEach((ref) => {
+    // Floating animations for all decorative elements
+    [pinkPlusRef, purplePlusRef, skyBluePlusRef].forEach((ref, i) => {
       if (ref.current) {
-        gsap.to(ref.current, { y: -15, duration: 3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+        gsap.to(ref.current, { y: -18, duration: 2.8 + i * 0.3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
       }
     });
     if (heartRef.current) {
-      gsap.to(heartRef.current, { y: -12, duration: 2.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+      gsap.to(heartRef.current, { y: -14, duration: 3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+    }
+    if (arrowRef.current) {
+      gsap.to(arrowRef.current, { y: -10, duration: 3.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
     }
   }, []);
 
@@ -42,19 +48,15 @@ const Hero = () => {
         {/* Left */}
         <div className="relative z-10 flex flex-col justify-center pb-12 lg:pb-0">
           <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-5 text-secondary-foreground">
-            <Heart className="w-4 h-4 fill-current text-destructive" />
+            <img src="/Heart_message.svg" alt="" className="w-5 h-5" />
             Solutions for Better Health
           </motion.div>
 
           <motion.h1 {...fadeUp(0.1)} className="relative text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-extrabold font-heading text-foreground leading-[1.05] mb-7">
             YOUR <span className="relative text-primary">
               HEALTH
-              {/* Decorative pink marks above HEALTH */}
-              <svg className="absolute -top-5 right-0 w-10 h-8" viewBox="0 0 40 30" fill="none">
-                <path d="M10 25L15 5" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeLinecap="round" />
-                <path d="M20 22L25 8" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeLinecap="round" />
-                <path d="M30 25L33 12" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeLinecap="round" />
-              </svg>
+              {/* Best_text decorative marks above HEALTH */}
+              <img src="/Best_text.svg" alt="" className="absolute -top-8 right-0 w-14 h-10" />
             </span> OUR PRIORITY
           </motion.h1>
 
@@ -106,44 +108,40 @@ const Hero = () => {
                   <AnimatedCounter end={s.value} suffix={s.suffix} className="text-center text-secondary-foreground border-0" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
-                {i === stats.length - 1 && (
-                  <div className="absolute -right-10 top-1/2 -translate-y-1/2">
-                    <Plus className="w-7 h-7 text-primary" />
-                  </div>
-                )}
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Right — Doctor image flush to bottom */}
+        {/* Right — Doctor image + decorative SVGs */}
         <div className="relative flex justify-center lg:justify-end items-end h-full overflow-visible">
-          {/* Pink cross - top right */}
-          <div ref={plusRef1} className="absolute top-[6%] right-[8%] z-20">
-            <Plus className="w-16 h-16 text-pink-500" strokeWidth={2.5} />
+          
+          {/* Pink cross - top right area */}
+          <div ref={pinkPlusRef} className="absolute top-[4%] right-[5%] z-20">
+            <img src="/Pink_Bless.svg" alt="" className="w-20 h-20 lg:w-24 lg:h-24" />
           </div>
 
-          {/* Heart bubble icon - near doctor's shoulder */}
-          <div ref={heartRef} className="absolute top-[28%] left-[18%] z-20">
-            <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-28 h-28 lg:w-32 lg:h-32 drop-shadow-xl" />
+          {/* Sky blue cross - top left area */}
+          <div ref={skyBluePlusRef} className="absolute top-[15%] left-[5%] z-20">
+            <img src="/Skyblue_Pluse.svg" alt="" className="w-16 h-16 lg:w-20 lg:h-20" />
           </div>
 
-          {/* Decorative scribble/arrow - large, pointing toward doctor */}
-          <div className="absolute top-[30%] right-[-4%] z-10">
-            <svg width="160" height="140" viewBox="0 0 160 140" fill="none">
-              <path d="M10 130C30 80 70 40 130 15" stroke="hsl(var(--foreground))" strokeWidth="4" strokeLinecap="round" />
-              <path d="M110 5L132 14L120 35" stroke="hsl(var(--foreground))" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-              {/* Extra decorative swoosh lines */}
-              <path d="M125 20C135 25 145 18 150 10" stroke="hsl(var(--foreground))" strokeWidth="3" strokeLinecap="round" />
-            </svg>
+          {/* Heart message bubble - near doctor's shoulder/head area */}
+          <div ref={heartRef} className="absolute top-[12%] left-[12%] z-20">
+            <img src="/Heart_message.svg" alt="" className="w-44 h-44 lg:w-56 lg:h-56 drop-shadow-2xl" />
+          </div>
+
+          {/* Arrow/scribble - pointing toward doctor from right side */}
+          <div ref={arrowRef} className="absolute top-[25%] right-[-2%] z-10">
+            <img src="/Simple_writing.svg" alt="" className="w-52 h-24 lg:w-72 lg:h-28" />
           </div>
 
           {/* Purple cross - bottom right */}
-          <div ref={plusRef2} className="absolute bottom-[12%] right-[-5%] z-20">
-            <Plus className="w-16 h-16 text-purple-500" strokeWidth={2.5} />
+          <div ref={purplePlusRef} className="absolute bottom-[15%] right-[-3%] z-20">
+            <img src="/Purple_place.svg" alt="" className="w-20 h-20 lg:w-24 lg:h-24" />
           </div>
 
-          {/* Doctor image — absolutely flush to bottom, no margin/padding */}
+          {/* Doctor image — flush to bottom */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -151,7 +149,7 @@ const Hero = () => {
             className="absolute bottom-0 left-0 right-0 h-full flex items-end justify-center lg:justify-end"
           >
             <img
-              src="/b1ab3f0d-41a7-4b12-878e-10d112ead6b4.png"
+              src="/Hero_Doctor_Image.svg"
               alt="Professional doctor in blue scrubs with stethoscope"
               className="max-h-[calc(100vh-5rem)] w-auto object-contain object-bottom"
             />
