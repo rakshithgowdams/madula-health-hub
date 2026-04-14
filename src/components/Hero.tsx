@@ -95,29 +95,33 @@ export default function Hero() {
 
           {/* Right */}
           <motion.div
-            className="order-1 lg:order-2 relative self-end overflow-hidden max-h-[320px] sm:max-h-[400px] lg:max-h-[600px]"
+            className="order-1 lg:order-2 relative self-end"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <img
-              className="hero-image w-full h-auto block"
-              alt="Doctor"
-              loading="lazy"
-              src="/Dr._Hero_section_Image.svg"
-            />
-            {/* Decorative SVGs — only visible on desktop (lg+) */}
-            <div className="hidden lg:flex float-el absolute -top-3 -right-3 w-10 h-10 items-center justify-center">
-              <img src="/Purple_place-2.svg" alt="" className="w-10 h-10" />
+            {/* Doctor image — overflow hidden only on this wrapper */}
+            <div className="overflow-hidden max-h-[320px] sm:max-h-[400px] lg:max-h-[600px]">
+              <img
+                className="hero-image w-full h-auto block"
+                alt="Doctor"
+                loading="lazy"
+                src="/Dr._Hero_section_Image.svg"
+              />
             </div>
-            <div className="hidden lg:flex float-el absolute bottom-24 -left-3 w-8 h-8 items-center justify-center">
-              <img src="/Pink_Bless-2.svg" alt="" className="w-8 h-8" />
+
+            {/* Decorative SVGs — outside overflow container, only on desktop */}
+            <div className="hidden lg:flex float-el absolute -top-4 -right-4 w-12 h-12 items-center justify-center z-10">
+              <img src="/Purple_place-2.svg" alt="" className="w-12 h-12" />
             </div>
-            <div className="hidden lg:block absolute top-1/4 -left-6">
+            <div className="hidden lg:flex float-el absolute bottom-20 -left-4 w-10 h-10 items-center justify-center z-10">
+              <img src="/Pink_Bless-2.svg" alt="" className="w-10 h-10" />
+            </div>
+            <div className="hidden lg:block absolute top-[20%] -left-10 z-10">
               <motion.img
                 src="/Heart_message-2.svg"
                 alt=""
-                className="w-20 h-20 drop-shadow-xl"
+                className="w-24 h-24 drop-shadow-xl"
                 animate={{
                   y: [0, -8, 0],
                   scale: [1, 1.08, 1],
@@ -129,11 +133,11 @@ export default function Hero() {
                 }}
               />
             </div>
-            <div className="hidden lg:block absolute top-[30%] -right-4">
+            <div className="hidden lg:block absolute top-[28%] -right-8 z-10">
               <motion.img
                 src="/Heart_message_1.svg"
                 alt=""
-                className="w-20 h-20 drop-shadow-xl"
+                className="w-24 h-24 drop-shadow-xl"
                 animate={{
                   y: [0, -6, 0],
                   scale: [1, 1.05, 1],
