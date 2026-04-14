@@ -20,9 +20,9 @@ export default function Hero() {
   const words = ['YOUR', 'HEALTH', 'OUR', 'PRIORITY'];
 
   return (
-    <section className="hero-section bg-[#F8F9FF] min-h-[85vh] sm:min-h-[80vh] md:min-h-[85vh] lg:min-h-[90vh] pt-24 pb-0 lg:pt-32 lg:pb-0 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="hero-section bg-[#F8F9FF] min-h-[108svh] sm:min-h-[112svh] md:min-h-[120svh] lg:min-h-[92svh] xl:min-h-[96svh] pt-24 pb-0 lg:pt-32 lg:pb-0 overflow-hidden">
+      <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
+        <div className="grid h-full grid-cols-1 items-end gap-12 lg:grid-cols-2">
 
           {/* Left */}
           <motion.div
@@ -95,15 +95,15 @@ export default function Hero() {
 
           {/* Right */}
           <motion.div
-            className="order-1 lg:order-2 relative self-end"
+            className="order-1 lg:order-2 relative flex h-full items-end self-end"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Doctor image — overflow hidden only on this wrapper */}
-            <div className="overflow-hidden max-h-[450px] sm:max-h-[520px] md:max-h-[560px] lg:max-h-[600px]">
+            <div className="flex h-[380px] w-full items-end overflow-hidden sm:h-[460px] md:h-[620px] lg:h-[640px] xl:h-[720px]">
               <img
-                className="hero-image w-full h-auto block"
+                className="hero-image block h-full w-full object-contain object-bottom"
                 alt="Doctor"
                 loading="lazy"
                 src="/Dr._Hero_section_Image.svg"
