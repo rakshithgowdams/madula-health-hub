@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -14,27 +13,21 @@ import Footer from '@/components/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
 
 const Index = () => (
-  <AnimatePresence>
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <CustomCursor />
-      <Navbar />
-      <Hero />
-      <Services />
-      <About />
-      <MarqueeBanner />
-      <Portfolio />
-      <WhyChooseUs />
-      <Pricing />
-      <Testimonials />
-      <Blog />
-      <Newsletter />
-      <Footer />
-    </motion.div>
-  </AnimatePresence>
+  <div>
+    <CustomCursor />
+    <Navbar />
+    <Hero />
+    <Services />
+    <About />
+    <MarqueeBanner />
+    <Portfolio />
+    <WhyChooseUs />
+    <Pricing />
+    <Testimonials />
+    <Blog />
+    <Newsletter />
+    <Footer />
+  </div>
 );
 
 export default Index;
