@@ -4,6 +4,8 @@ import { Heart, Plus, ArrowRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedCounter from './ui/AnimatedCounter';
+import heartBubble from '@/assets/heart-bubble.png';
+import pinkCross from '@/assets/pink-cross.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +19,7 @@ const Hero = () => {
   const imageRef = useRef<HTMLDivElement>(null);
   const plusRef1 = useRef<HTMLDivElement>(null);
   const plusRef2 = useRef<HTMLDivElement>(null);
+  const heartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (imageRef.current) {
@@ -36,6 +39,9 @@ const Hero = () => {
         gsap.to(ref.current, { y: -15, duration: 3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
       }
     });
+    if (heartRef.current) {
+      gsap.to(heartRef.current, { y: -10, duration: 2.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+    }
   }, []);
 
   const stats = [
@@ -45,71 +51,105 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
-      {/* Background blob */}
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl -z-10" />
+    <section id="home" className="relative min-h-screen pt-28 pb-20 lg:pt-36 lg:pb-32 overflow-hidden bg-background">
+      {/* Background gradient blobs */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/3 blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         {/* Left */}
-        <div>
-          <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-destructive text-xs font-semibold uppercase tracking-wider mb-4">
+        <div className="relative z-10">
+          <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-destructive text-xs font-semibold uppercase tracking-wider mb-5">
             <Heart className="w-4 h-4 fill-current" />
             Solutions for Better Health
           </motion.div>
 
-          <motion.h1 {...fadeUp(0.1)} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold font-heading text-foreground leading-tight mb-6">
+          <motion.h1 {...fadeUp(0.1)} className="text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-extrabold font-heading text-foreground leading-[1.05] mb-7">
             YOUR <span className="text-primary">HEALTH</span> OUR PRIORITY
           </motion.h1>
 
-          <motion.p {...fadeUp(0.2)} className="text-muted-foreground max-w-md mb-8 leading-relaxed">
-            Our compassionate healthcare team is dedicated to providing personalized, high-quality medical care for you and your family.
+          <motion.p {...fadeUp(0.2)} className="text-muted-foreground max-w-lg mb-9 leading-relaxed text-base">
+            we are dedicated to putting your health at the forefront of everything we do. Our compassionate team of healthcare.
           </motion.p>
 
-          <motion.div {...fadeUp(0.3)}>
+          {/* CTA + Social proof row */}
+          <motion.div {...fadeUp(0.3)} className="flex flex-wrap items-center gap-6 mb-10">
             <motion.a
               href="#about"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded-full text-sm font-medium"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-full text-sm font-medium shadow-lg shadow-primary/25"
             >
               Read More <ArrowRight className="w-4 h-4" />
             </motion.a>
-          </motion.div>
 
-          {/* Social proof */}
-          <motion.div {...fadeUp(0.4)} className="flex items-center gap-4 mt-10">
-            <div className="flex -space-x-3">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-10 h-10 rounded-full bg-primary/20 border-2 border-card" />
-              ))}
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-3">
+                {[
+                  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
+                  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face',
+                  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
+                ].map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt={`Team member ${i + 1}`}
+                    className="w-11 h-11 rounded-full border-2 border-card object-cover"
+                  />
+                ))}
+                <div className="w-11 h-11 rounded-full bg-foreground border-2 border-card flex items-center justify-center">
+                  <Plus className="w-4 h-4 text-primary-foreground" />
+                </div>
+              </div>
+              <div>
+                <span className="text-sm font-bold text-foreground">2000+</span>
+                <p className="text-xs text-muted-foreground">Experience Team</p>
+              </div>
             </div>
-            <span className="text-sm font-medium text-foreground">2000+ Experience Team</span>
           </motion.div>
 
           {/* Stats */}
-          <motion.div {...fadeUp(0.5)} className="flex gap-8 mt-8">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold font-heading text-foreground">
+          <motion.div {...fadeUp(0.5)} className="flex items-center gap-10">
+            {stats.map((s, i) => (
+              <div key={s.label} className="relative">
+                <div className="text-3xl md:text-4xl font-bold font-heading text-foreground">
                   <AnimatedCounter end={s.value} suffix={s.suffix} />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
+                {/* Floating cross after last stat */}
+                {i === stats.length - 1 && (
+                  <div className="absolute -right-10 top-1/2 -translate-y-1/2">
+                    <Plus className="w-7 h-7 text-primary" />
+                  </div>
+                )}
               </div>
             ))}
           </motion.div>
         </div>
 
         {/* Right */}
-        <div className="relative flex justify-center">
-          {/* Floating decorative */}
-          <div ref={plusRef1} className="absolute top-8 left-4 z-10">
-            <Plus className="w-8 h-8 text-primary" />
+        <div className="relative flex justify-center lg:justify-end">
+          {/* Pink cross - top right */}
+          <div ref={plusRef1} className="absolute top-4 right-8 z-20">
+            <img src={pinkCross} alt="" className="w-8 h-8" />
           </div>
-          <div ref={plusRef2} className="absolute bottom-16 right-4 z-10">
-            <Plus className="w-6 h-6 text-accent" />
+
+          {/* Heart bubble icon - left of doctor */}
+          <div ref={heartRef} className="absolute top-1/4 left-8 lg:left-0 z-20">
+            <img src={heartBubble} alt="" className="w-20 h-20 lg:w-24 lg:h-24" />
           </div>
-          <div className="absolute top-1/4 right-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center z-10">
-            <Heart className="w-5 h-5 text-accent" />
+
+          {/* Blue cross - bottom right */}
+          <div ref={plusRef2} className="absolute bottom-12 right-0 z-20">
+            <Plus className="w-10 h-10 text-primary" strokeWidth={3} />
+          </div>
+
+          {/* Decorative scribble/arrow marks - dark */}
+          <div className="absolute top-16 right-0 z-10 opacity-80">
+            <svg width="60" height="50" viewBox="0 0 60 50" fill="none">
+              <path d="M5 45C15 20 35 10 55 5" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M45 2L55 5L50 14" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </div>
 
           <motion.div
@@ -121,8 +161,8 @@ const Hero = () => {
           >
             <img
               src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600"
-              alt="Professional doctor in white coat"
-              className="rounded-3xl w-full max-w-md lg:max-w-lg object-cover"
+              alt="Professional doctor in blue scrubs with stethoscope"
+              className="rounded-3xl w-full max-w-md lg:max-w-lg xl:max-w-xl object-cover"
             />
           </motion.div>
         </div>
