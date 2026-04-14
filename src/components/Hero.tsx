@@ -112,7 +112,7 @@ const Hero = () => {
           <motion.div {...fadeUp(0.5)} className="flex items-center gap-10">
             {stats.map((s, i) => (
               <div key={s.label} className="relative">
-                <div className="text-3xl md:text-4xl font-bold font-heading text-foreground">
+                <div className="text-3xl md:text-4xl font-extrabold font-heading text-foreground">
                   <AnimatedCounter end={s.value} suffix={s.suffix} className="text-center text-secondary-foreground border-0" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
