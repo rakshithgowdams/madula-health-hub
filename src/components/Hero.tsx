@@ -107,8 +107,8 @@ const Hero = () => {
                 </div>
                 <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">{s.label}</p>
                 {s.label === 'Expert Specialists' && (
-                  <div ref={skyBluePlusRef} className="absolute -top-4 right-[-105px] z-20 hidden md:block">
-                    <img src="/Skyblue_Pluse.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10 mx-[24px] my-[64px]" />
+                  <div ref={skyBluePlusRef} className="absolute -top-4 right-[-105px] md:-top-12 md:right-[-60px] lg:-top-4 lg:right-[-105px] z-20 hidden md:block">
+                    <img src="/Skyblue_Pluse.svg" alt="" className="w-8 h-8 lg:w-10 lg:h-10" />
                   </div>
                 )}
               </div>
