@@ -105,7 +105,7 @@ export default function Hero() {
                 className="hero-image w-full h-full object-cover object-top"
                 alt="Doctor"
                 loading="lazy"
-                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&h=700&fit=crop&crop=top"
+                src="fede0f1d-db53-4d6d-aa77-1a6dfcd8f7ab.svg"
               />
             </div>
             <div className="float-el absolute -top-3 -right-3 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
