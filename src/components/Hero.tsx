@@ -126,27 +126,27 @@ const Hero = () => {
 
         {/* Right — Doctor image touching bottom */}
         <div className="relative flex justify-center lg:justify-end items-end h-full">
-          {/* Pink cross - top right of doctor area */}
-          <div ref={plusRef1} className="absolute top-[15%] right-[15%] z-20">
-            <Plus className="w-8 h-8 text-pink-500" strokeWidth={3} />
+          {/* Pink cross - top right, away from doctor */}
+          <div ref={plusRef1} className="absolute top-[8%] right-[5%] z-20">
+            <Plus className="w-12 h-12 text-pink-500" strokeWidth={3} />
           </div>
 
-          {/* Heart bubble icon - left of doctor */}
-          <div ref={heartRef} className="absolute top-[35%] left-[5%] z-20">
-            <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-20 h-20 lg:w-24 lg:h-24 my-[160px] py-0 px-0 text-8xl" />
+          {/* Heart bubble icon - between text and doctor */}
+          <div ref={heartRef} className="absolute top-[25%] left-[-10%] z-20">
+            <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-24 h-24 lg:w-28 lg:h-28" />
           </div>
 
-          {/* Decorative scribble/arrow marks */}
-          <div className="absolute top-[40%] right-[2%] z-10 opacity-80">
-            <svg width="70" height="60" viewBox="0 0 60 50" fill="none">
-              <path d="M5 45C15 20 35 10 55 5" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" />
-              <path d="M45 2L55 5L50 14" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          {/* Decorative scribble/arrow pointing toward doctor */}
+          <div className="absolute top-[35%] right-[-2%] z-10 opacity-90">
+            <svg width="100" height="80" viewBox="0 0 80 70" fill="none">
+              <path d="M5 65C20 30 50 12 75 5" stroke="hsl(var(--foreground))" strokeWidth="3" strokeLinecap="round" />
+              <path d="M62 2L75 5L70 18" stroke="hsl(var(--foreground))" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
 
-          {/* Purple cross - bottom right */}
-          <div ref={plusRef2} className="absolute bottom-[10%] right-[2%] z-20">
-            <Plus className="w-8 h-8 text-purple-500" strokeWidth={3} />
+          {/* Purple cross - bottom right, away from doctor */}
+          <div ref={plusRef2} className="absolute bottom-[15%] right-[-3%] z-20">
+            <Plus className="w-12 h-12 text-purple-500" strokeWidth={3} />
           </div>
 
           <motion.div
