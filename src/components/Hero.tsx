@@ -147,7 +147,7 @@ const Hero = () => {
 
           {/* Arrow/scribble - right side near doctor's shoulder */}
           <div ref={arrowRef} className="absolute top-[25%] right-[-3%] z-10">
-            <img src="/Simple_writing.svg" alt="" className="w-44 h-20 lg:w-56 lg:h-24 mx-[27px] my-[240px] -rotate-[25deg]" />
+            <img src="/Simple_writing.svg" alt="" className="w-44 h-20 lg:w-56 lg:h-24 mx-[27px] my-[240px] rotate-[50deg]" />
           </div>
 
 
