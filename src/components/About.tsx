@@ -36,21 +36,22 @@ export default function About() {
   return (
     <section className="about-section bg-[#F8F9FF] py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Left — image stack */}
           <AnimatedSection direction="left">
-            <div className="relative h-[420px] sm:h-[500px]">
-              <div className="absolute left-0 bottom-0 w-3/4 h-4/5 overflow-hidden rounded-3xl shadow-xl">
+            <div className="overflow-hidden">
+            <div className="relative h-[360px] sm:h-[440px] lg:h-[520px]">
+              <div className="absolute left-0 bottom-0 w-3/4 h-[75%] overflow-hidden rounded-3xl shadow-xl">
                 <img className="about-main-img w-full h-full object-cover my-0" alt="Doctor with patient" loading="lazy"
                   src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&h=600&fit=crop" />
               </div>
-              <div className="absolute right-0 top-0 w-2/3 h-3/5 overflow-hidden rounded-3xl border-4 border-white shadow-2xl">
+              <div className="absolute right-0 top-0 w-[55%] h-[55%] overflow-hidden rounded-3xl border-4 border-white shadow-2xl">
                 <img className="about-sec-img w-full h-full object-cover my-0" alt="Medical team" loading="lazy"
                   src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=350&fit=crop" />
               </div>
               {/* Rotating badge */}
-              <div className="absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-card rounded-full shadow-md flex items-center justify-center">
+              <div className="hidden lg:block absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 pointer-events-none">
                 <svg viewBox="0 0 100 100" width="96" height="96" className="animate-spin" style={{ animationDuration: '20s' }}>
                   <defs><path id="tc2" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" fill="none" /></defs>
                   <text fontSize="9.5" fill="#4F46E5"><textPath href="#tc2">MADULA MEDICAL • DOCTORS SEARCH •</textPath></text>
@@ -59,6 +60,7 @@ export default function About() {
                   <div className="w-10 h-10 bg-primary rounded-full" />
                 </div>
               </div>
+            </div>
             </div>
           </AnimatedSection>
 
