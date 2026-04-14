@@ -20,7 +20,7 @@ export default function Hero() {
   const words = ['YOUR', 'HEALTH', 'OUR', 'PRIORITY'];
 
   return (
-    <section className="hero-section bg-[#F8F9FF] min-h-[108svh] sm:min-h-[112svh] md:min-h-[120svh] lg:min-h-[92svh] xl:min-h-[96svh] pt-24 pb-0 lg:pt-32 lg:pb-0 overflow-hidden mx-[43px] my-px">
+    <section className="hero-section bg-[#F8F9FF] pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden mx-[43px] my-px">
       <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
         <div className="grid h-full grid-cols-1 items-end gap-12 lg:grid-cols-2">
 
@@ -95,13 +95,13 @@ export default function Hero() {
 
           {/* Right */}
           <motion.div
-            className="order-1 lg:order-2 relative flex h-full items-end self-end"
+            className="order-1 lg:order-2 relative h-[340px] sm:h-[420px] lg:h-[580px]"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Doctor image — overflow hidden only on this wrapper */}
-            <div className="flex h-[380px] w-full items-end overflow-hidden sm:h-[460px] md:h-[620px] lg:h-[640px] xl:h-[720px]">
+            <div className="absolute inset-0 overflow-hidden rounded-3xl">
               <img
                 className="hero-image block h-full w-full object-contain object-bottom"
                 alt="Doctor"
@@ -111,13 +111,13 @@ export default function Hero() {
             </div>
 
             {/* Decorative SVGs — visible on all breakpoints with responsive sizing */}
-            <div className="float-el absolute top-4 right-3 md:top-2 md:right-2 lg:-top-4 lg:-right-4 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 items-center justify-center z-10 flex pointer-events-none">
+            <div className="hidden sm:flex float-el absolute top-4 right-3 md:top-2 md:right-2 lg:-top-4 lg:-right-4 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 items-center justify-center z-10 pointer-events-none">
               <img src="/Purple_place-2.svg" alt="" className="w-full h-full" />
             </div>
-            <div className="float-el absolute bottom-12 left-2 md:bottom-16 md:left-1 lg:bottom-20 lg:-left-4 w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 items-center justify-center z-10 flex pointer-events-none">
+            <div className="hidden sm:flex float-el absolute bottom-12 left-2 md:bottom-16 md:left-1 lg:bottom-20 lg:-left-4 w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 items-center justify-center z-10 pointer-events-none">
               <img src="/Pink_Bless-2.svg" alt="" className="w-full h-full" />
             </div>
-            <div className="absolute top-[14%] left-0 md:top-[18%] md:-left-3 lg:top-[20%] lg:-left-10 z-10 pointer-events-none">
+            <div className="hidden sm:block absolute top-[14%] left-0 md:top-[18%] md:-left-3 lg:top-[20%] lg:-left-10 z-10 pointer-events-none">
               <motion.img
                 src="/Heart_message-2.svg"
                 alt=""
@@ -133,7 +133,7 @@ export default function Hero() {
                 }}
               />
             </div>
-            <div className="absolute top-[18%] right-0 md:top-[22%] md:right-0 lg:top-[28%] lg:-right-8 z-10 pointer-events-none">
+            <div className="hidden sm:block absolute top-[18%] right-0 md:top-[22%] md:right-0 lg:top-[28%] lg:-right-8 z-10 pointer-events-none">
               <motion.img
                 src="/Heart_message_1.svg"
                 alt=""
