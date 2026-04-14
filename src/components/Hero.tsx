@@ -147,7 +147,7 @@ const Hero = () => {
 
           {/* Sky blue cross - near stats area, lower left */}
           <div ref={skyBluePlusRef} className="absolute bottom-[20%] left-[42%] z-20">
-            <img src="/Skyblue_Pluse.svg" alt="" className="w-10 h-10 lg:w-12 lg:h-12" />
+            <img src="/Skyblue_Pluse.svg" alt="" className="w-10 h-10 lg:w-12 lg:h-12 px-0 mx-0 my-0" />
           </div>
 
           {/* Purple cross - bottom right */}
