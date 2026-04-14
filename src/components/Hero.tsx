@@ -136,7 +136,7 @@ const Hero = () => {
 
           {/* Heart bubble icon - left of doctor */}
           <div ref={heartRef} className="absolute top-1/4 left-8 lg:left-0 z-20">
-            <img src="/cda3948b-d374-4a62-a91a-b90bfb53dcbf.png" alt="" className="w-20 h-20 lg:w-24 lg:h-24 text-left mx-[150px] rounded-none object-fill" />
+            <img src="/f200f042-82f6-454a-8e50-4e695de165e1.png" alt="" className="w-20 h-20 lg:w-24 lg:h-24 text-left mx-[150px] rounded-none object-fill" />
           </div>
 
           {/* Blue cross - bottom right */}
@@ -146,7 +146,7 @@ const Hero = () => {
 
           {/* Decorative scribble/arrow marks - dark */}
           <div className="absolute top-16 right-0 z-10 opacity-80">
-            <svg width="60" height="50" viewBox="0 0 60 50" fill="none">
+            <svg width="60" height="50" viewBox="0 0 60 50" fill="none" className="text-xs text-center">
               <path d="M5 45C15 20 35 10 55 5" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" />
               <path d="M45 2L55 5L50 14" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -160,7 +160,7 @@ const Hero = () => {
             className="relative"
           >
             <img
-              src="/5039dbbb-ad12-4b6a-9d81-cba8266a870b.png"
+              src="/5fc12e02-1712-4758-86be-34ed11102e61.png"
               alt="Professional doctor in blue scrubs with stethoscope"
               className="rounded-3xl w-full max-w-md lg:max-w-lg xl:max-w-xl object-cover"
             />
