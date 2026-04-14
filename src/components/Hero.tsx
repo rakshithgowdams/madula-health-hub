@@ -49,12 +49,12 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen pt-28 pb-0 lg:pt-36 overflow-hidden bg-[#e5f1f5]">
+    <section id="home" className="relative min-h-screen pt-28 pb-0 lg:pt-32 overflow-hidden bg-[#e5f1f5]">
       {/* Background gradient blobs */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl -z-10" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/3 blur-3xl -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-2 gap-8 items-end">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-[1fr_1fr] gap-0 items-end">
         {/* Left */}
         <div className="relative z-10 pb-12 lg:pb-20">
           <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-5 text-secondary-foreground">
@@ -159,7 +159,7 @@ const Hero = () => {
             <img
               src="/b1ab3f0d-41a7-4b12-878e-10d112ead6b4.png"
               alt="Professional doctor in blue scrubs with stethoscope"
-              className="w-full max-w-md lg:max-w-lg xl:max-w-xl object-contain"
+              className="w-full max-w-[520px] xl:max-w-[580px] object-contain"
             />
           </motion.div>
         </div>
