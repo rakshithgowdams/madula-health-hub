@@ -135,23 +135,23 @@ const Hero = () => {
 
           {/* Decorative elements — hidden on mobile, visible on lg+ */}
           {/* Heart message bubble */}
-          <div ref={heartRef} className="absolute top-[20%] left-[5%] z-20 hidden md:block">
-            <img src="/Heart_message.svg" alt="" className="w-28 h-28 lg:w-36 lg:h-36 drop-shadow-2xl mx-0 my-[171px]" />
+          <div ref={heartRef} className="absolute top-[20%] left-[5%] md:top-[52%] md:left-[-2%] lg:top-[20%] lg:left-[5%] z-20 hidden md:block">
+            <img src="/Heart_message.svg" alt="" className="w-20 h-20 md:w-24 md:h-24 lg:w-36 lg:h-36 drop-shadow-2xl" />
           </div>
 
           {/* Pink cross */}
-          <div ref={pinkPlusRef} className="absolute top-[6%] right-[18%] z-20 hidden md:block">
-            <img src="/Pink_Bless.svg" alt="" className="w-10 h-10 lg:w-14 lg:h-14" />
+          <div ref={pinkPlusRef} className="absolute top-[6%] right-[18%] md:top-[2%] md:right-[5%] lg:top-[6%] lg:right-[18%] z-20 hidden md:block">
+            <img src="/Pink_Bless.svg" alt="" className="w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14" />
           </div>
 
           {/* Arrow/scribble */}
-          <div ref={arrowRef} className="absolute top-[25%] right-[-3%] z-10 hidden md:block">
-            <img src="/Simple_writing.svg" alt="" className="w-44 h-20 lg:w-56 lg:h-24 mx-[27px] -rotate-[5deg] my-[219px]" />
+          <div ref={arrowRef} className="absolute top-[25%] right-[-3%] md:top-[8%] md:right-[-2%] lg:top-[25%] lg:right-[-3%] z-10 hidden md:block">
+            <img src="/Simple_writing.svg" alt="" className="w-32 h-16 md:w-36 md:h-18 lg:w-56 lg:h-24 -rotate-[5deg]" />
           </div>
 
           {/* Purple cross */}
-          <div ref={purplePlusRef} className="absolute bottom-[100px] right-[calc(2%+10px)] z-20 hidden md:block">
-            <img src="/Purple_place.svg" alt="" className="w-10 h-10 lg:w-14 lg:h-14 px-0 my-px mx-0" />
+          <div ref={purplePlusRef} className="absolute bottom-[100px] right-[calc(2%+10px)] md:bottom-[60px] md:right-[2%] lg:bottom-[100px] lg:right-[calc(2%+10px)] z-20 hidden md:block">
+            <img src="/Purple_place.svg" alt="" className="w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14" />
           </div>
         </div>
       </div>
