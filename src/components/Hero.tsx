@@ -132,7 +132,7 @@ const Hero = () => {
 
           {/* Heart message bubble - to the left of doctor's head */}
           <div ref={heartRef} className="absolute top-[20%] left-[5%] z-20">
-            <img src="/Heart_message.svg" alt="" className="w-28 h-28 lg:w-36 lg:h-36 drop-shadow-2xl" />
+            <img src="/Heart_message.svg" alt="" className="w-28 h-28 lg:w-36 lg:h-36 drop-shadow-2xl mx-0 my-[171px]" />
           </div>
 
           {/* Pink cross - top right above doctor */}
