@@ -95,7 +95,7 @@ export default function Hero() {
 
           {/* Right */}
           <motion.div
-            className="order-1 lg:order-2 relative self-end"
+            className="order-1 lg:order-2 relative self-end overflow-hidden max-h-[320px] sm:max-h-[400px] lg:max-h-[600px]"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -106,17 +106,18 @@ export default function Hero() {
               loading="lazy"
               src="/Dr._Hero_section_Image.svg"
             />
-            <div className="float-el absolute -top-3 -right-3 w-10 h-10 flex items-center justify-center">
+            {/* Decorative SVGs — hidden on mobile for clean layout */}
+            <div className="hidden sm:flex float-el absolute -top-3 -right-3 w-10 h-10 items-center justify-center">
               <img src="/Purple_place-2.svg" alt="" className="w-10 h-10" />
             </div>
-            <div className="float-el absolute bottom-24 -left-3 w-8 h-8 flex items-center justify-center">
+            <div className="hidden sm:flex float-el absolute bottom-24 -left-3 w-8 h-8 items-center justify-center">
               <img src="/Pink_Bless-2.svg" alt="" className="w-8 h-8" />
             </div>
-            <div className="absolute top-1/4 -left-6">
+            <div className="hidden md:block absolute top-1/4 -left-6 lg:-left-6">
               <motion.img
                 src="/Heart_message-2.svg"
                 alt=""
-                className="w-20 h-20 drop-shadow-xl"
+                className="w-14 h-14 lg:w-20 lg:h-20 drop-shadow-xl"
                 animate={{
                   y: [0, -8, 0],
                   scale: [1, 1.08, 1],
@@ -128,11 +129,11 @@ export default function Hero() {
                 }}
               />
             </div>
-            <div className="absolute top-[30%] -right-4">
+            <div className="hidden md:block absolute top-[30%] -right-2 lg:-right-4">
               <motion.img
                 src="/Heart_message_1.svg"
                 alt=""
-                className="w-20 h-20 drop-shadow-xl"
+                className="w-14 h-14 lg:w-20 lg:h-20 drop-shadow-xl"
                 animate={{
                   y: [0, -6, 0],
                   scale: [1, 1.05, 1],
