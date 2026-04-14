@@ -160,7 +160,7 @@ const Hero = () => {
             className="relative"
           >
             <img
-              src="/5fc12e02-1712-4758-86be-34ed11102e61.png"
+              src="/b1ab3f0d-41a7-4b12-878e-10d112ead6b4.png"
               alt="Professional doctor in blue scrubs with stethoscope"
               className="rounded-t-3xl rounded-b-none w-full max-w-md lg:max-w-lg xl:max-w-xl object-cover mb-0"
             />
