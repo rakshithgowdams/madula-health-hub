@@ -110,18 +110,18 @@ export default function Hero() {
               />
             </div>
 
-            {/* Decorative SVGs — outside overflow container, only on desktop */}
-            <div className="hidden lg:flex float-el absolute -top-4 -right-4 w-12 h-12 items-center justify-center z-10">
-              <img src="/Purple_place-2.svg" alt="" className="w-12 h-12" />
+            {/* Decorative SVGs — visible on all breakpoints with responsive sizing */}
+            <div className="float-el absolute top-4 right-3 md:top-2 md:right-2 lg:-top-4 lg:-right-4 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 items-center justify-center z-10 flex pointer-events-none">
+              <img src="/Purple_place-2.svg" alt="" className="w-full h-full" />
             </div>
-            <div className="hidden lg:flex float-el absolute bottom-20 -left-4 w-10 h-10 items-center justify-center z-10">
-              <img src="/Pink_Bless-2.svg" alt="" className="w-10 h-10" />
+            <div className="float-el absolute bottom-12 left-2 md:bottom-16 md:left-1 lg:bottom-20 lg:-left-4 w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 items-center justify-center z-10 flex pointer-events-none">
+              <img src="/Pink_Bless-2.svg" alt="" className="w-full h-full" />
             </div>
-            <div className="hidden lg:block absolute top-[20%] -left-10 z-10">
+            <div className="absolute top-[14%] left-0 md:top-[18%] md:-left-3 lg:top-[20%] lg:-left-10 z-10 pointer-events-none">
               <motion.img
                 src="/Heart_message-2.svg"
                 alt=""
-                className="w-24 h-24 drop-shadow-xl"
+                className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 drop-shadow-xl"
                 animate={{
                   y: [0, -8, 0],
                   scale: [1, 1.08, 1],
@@ -133,11 +133,11 @@ export default function Hero() {
                 }}
               />
             </div>
-            <div className="hidden lg:block absolute top-[28%] -right-8 z-10">
+            <div className="absolute top-[18%] right-0 md:top-[22%] md:right-0 lg:top-[28%] lg:-right-8 z-10 pointer-events-none">
               <motion.img
                 src="/Heart_message_1.svg"
                 alt=""
-                className="w-24 h-24 drop-shadow-xl mx-[74px] px-0 my-[64px]"
+                className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 drop-shadow-xl lg:mx-[74px] lg:px-0 lg:my-[64px]"
                 animate={{
                   y: [0, -6, 0],
                   scale: [1, 1.05, 1],
