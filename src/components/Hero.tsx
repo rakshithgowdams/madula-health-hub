@@ -148,12 +148,12 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="absolute bottom-0 right-0 lg:right-[-5%] h-full flex items-end"
+            className="absolute bottom-0 left-0 right-0 h-full flex items-end justify-center lg:justify-end"
           >
             <img
               src="/b1ab3f0d-41a7-4b12-878e-10d112ead6b4.png"
               alt="Professional doctor in blue scrubs with stethoscope"
-              className="h-[95%] w-auto object-contain object-bottom"
+              className="max-h-[calc(100vh-5rem)] w-auto object-contain object-bottom"
             />
           </motion.div>
         </div>
