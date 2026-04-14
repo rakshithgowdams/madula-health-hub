@@ -51,7 +51,7 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen pt-28 pb-20 lg:pt-36 lg:pb-32 overflow-hidden bg-[#e5f1f5]">
+    <section id="home" className="relative min-h-screen pt-28 pb-20 lg:pt-36 lg:pb-0 overflow-hidden bg-[#e5f1f5]">
       {/* Background gradient blobs */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl -z-10" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/3 blur-3xl -z-10" />
@@ -128,7 +128,7 @@ const Hero = () => {
         </div>
 
         {/* Right */}
-        <div className="relative flex justify-center lg:justify-end">
+        <div className="relative flex justify-center lg:justify-end items-end self-end">
           {/* Pink cross - top right */}
           <div ref={plusRef1} className="absolute top-4 right-8 z-20">
             <img src={pinkCross} alt="" className="w-8 h-8" />
@@ -162,7 +162,7 @@ const Hero = () => {
             <img
               src="/5fc12e02-1712-4758-86be-34ed11102e61.png"
               alt="Professional doctor in blue scrubs with stethoscope"
-              className="rounded-3xl w-full max-w-md lg:max-w-lg xl:max-w-xl object-cover"
+              className="rounded-t-3xl rounded-b-none w-full max-w-md lg:max-w-lg xl:max-w-xl object-cover mb-0"
             />
           </motion.div>
         </div>
